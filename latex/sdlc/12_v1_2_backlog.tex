@@ -1,0 +1,83 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{v1.2 Backlog and Target Definition: Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Purpose}
+This document defines the prioritized backlog for v1.2 and measurable quality targets aligned with PIR action item A-02.
+
+\section{Baseline and Scope}
+\begin{itemize}[leftmargin=*]
+  \item Baseline release: \texttt{v1.1.0}.
+  \item Scope type: UX polish, performance hardening, and release process improvements.
+  \item Constraint: Keep frontend architecture lightweight and maintainable.
+\end{itemize}
+
+\section{Measurable Targets (v1.2)}
+\begin{longtable}{|p{0.14\linewidth}|p{0.30\linewidth}|p{0.22\linewidth}|p{0.24\linewidth}|}
+\hline
+Target ID & Metric & Current Baseline & v1.2 Target \\
+\hline
+PT-01 & Lighthouse Performance score & 94 & >= 96 \\
+\hline
+PT-02 & Total Blocking Time (TBT) & 260 ms & <= 200 ms \\
+\hline
+PT-03 & Activation response (NFR-01 path) & <= 200 ms (pass) & <= 150 ms median on test machine \\
+\hline
+UX-01 & Activation control clarity & Single CTA with state text & Improved microcopy and explicit state transitions \\
+\hline
+UX-02 & Accessibility stability & Baseline pass & Preserve >= 100 Lighthouse accessibility and keyboard parity \\
+\hline
+OPS-01 & Release documentation speed & Manual template edits & Scripted notes generation in < 2 minutes \\
+\hline
+\end{longtable}
+
+\section{Prioritized Backlog}
+\begin{longtable}{|p{0.10\linewidth}|p{0.44\linewidth}|p{0.12\linewidth}|p{0.12\linewidth}|p{0.14\linewidth}|}
+\hline
+ID & Backlog Item & Priority & Type & Acceptance Criteria \\
+\hline
+B-01 & Optimize animation frame workload to reduce main-thread blocking. & High & Performance & TBT <= 200 ms in repeat Lighthouse runs. \\
+\hline
+B-02 & Add lightweight FPS-safe rendering guard for low-power devices. & High & Performance & No visible stutter in activation flow on baseline machine. \\
+\hline
+B-03 & Refine CTA and status text wording for clearer mode transitions. & Medium & UX & User can identify current mode without ambiguity. \\
+\hline
+B-04 & Improve focus-visible styling and keyboard feedback consistency. & Medium & Accessibility & Keyboard-only flow remains fully operable and obvious. \\
+\hline
+B-05 & Introduce optional visual tuning controls for animation intensity. & Medium & UX & User can adjust intensity without breaking reduced-motion behavior. \\
+\hline
+B-06 & Add scripted release notes generation to release process. & Medium & Operations & `new-release-notes.ps1` generates usable notes file successfully. \\
+\hline
+B-07 & Add post-release smoke checklist to release package. & Low & Operations & Smoke checklist executed and documented per release. \\
+\hline
+\end{longtable}
+
+\section{Execution Plan}
+\begin{itemize}[leftmargin=*]
+  \item Sprint window: 2026-02-20 to 2026-03-10.
+  \item Milestone 1: Performance improvements (B-01, B-02).
+  \item Milestone 2: UX and accessibility polish (B-03, B-04, B-05).
+  \item Milestone 3: Operations improvements (B-06, B-07).
+\end{itemize}
+
+\section{Validation Plan for v1.2}
+\begin{itemize}[leftmargin=*]
+  \item Re-run TC-01 to TC-10 and add any new test cases required by v1.2 scope.
+  \item Capture Lighthouse report evidence for performance and accessibility targets.
+  \item Update RTM and release notes with final pass/fail evidence.
+\end{itemize}
+
+\end{document}

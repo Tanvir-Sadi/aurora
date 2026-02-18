@@ -14,5 +14,10 @@ This folder keeps SDLC documents in chronological order.
 9. `09_release_deployment_plan.tex` (Release/go-live process)
 10. `10_operations_maintenance_plan.tex` (Run and support model)
 11. `11_post_implementation_review.tex` (Closure and lessons learned)
+12. `12_v1_2_backlog.tex` (Post-release backlog with measurable targets)
+
+## Supporting Artifacts
+- Release notes template: `RELEASE_NOTES_TEMPLATE.md`
+- Release notes generator script: `scripts/new-release-notes.ps1`
 
 Build any document by opening that `.tex` file in VS Code and running LaTeX Workshop build.
