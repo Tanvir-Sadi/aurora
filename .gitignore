@@ -14,3 +14,20 @@
 *.toc
 latex/build/
 latex/sdlc/build/
+
+# Web / Node
+node_modules/
+dist/
+build/
+coverage/
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
