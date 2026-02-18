@@ -30,7 +30,9 @@ UI Layer (HTML/CSS) & Layout, button presentation, scene layers, responsive beha
 \hline
 Interaction Controller (JS) & Event handling, state transitions (default -> night) \\
 \hline
-Animation Engine (JS) & requestAnimationFrame loop, aurora motion calculations \\
+Animation Engine (JS) & requestAnimationFrame loop, aurora motion calculations and fallback rendering \\
+\hline
+Aurora Media Layer (Video) & Video-first realistic aurora playback in night mode \\
 \hline
 Accessibility Handler (JS/CSS) & Keyboard support and reduced-motion logic \\
 \hline
@@ -49,15 +51,29 @@ Accessibility Handler (JS/CSS) & Keyboard support and reduced-motion logic \\
   \item User triggers primary button.
   \item Controller sets \texttt{night-active} class.
   \item Animation engine initializes and starts frame loop.
+  \item Pointer movement updates interactive parallax offsets for scene depth cues.
   \item If reduced-motion is active, engine runs reduced effect path.
 \end{enumerate}
 
-\subsection{File-Level Design (Proposed)}
+\subsection{Aurora Rendering Strategy (v1.2 Realism Update)}
+\begin{itemize}[leftmargin=*]
+  \item Runtime uses video-first realistic aurora playback for cinematic output with low CPU usage.
+  \item Canvas renderer remains as automatic fallback when video asset is unavailable or playback is blocked.
+  \item Renderer uses multi-layer curtain geometry with noise-modulated crest lines instead of only sinusoidal bands.
+  \item Each layer computes vertical light-veil tails to simulate altitude variation and depth separation.
+  \item Atmospheric haze pass is rendered per frame to soften transitions and increase scene depth.
+  \item Color pipeline uses dynamic hue drift with gradient falloff and top-edge glow for realistic blending.
+  \item UI includes lightweight micro-interactions (button tilt and ripple feedback) to improve perceived responsiveness.
+  \item Reduced-motion mode keeps the same architecture with fewer layers and lower motion amplitude.
+\end{itemize}
+
+\subsection{File-Level Design (Current)}
 \begin{itemize}[leftmargin=*]
   \item \texttt{index.html}: structural markup and control element.
   \item \texttt{styles.css}: scene styling and transitions.
-  \item \texttt{app.js}: initialization and interaction control.
-  \item \texttt{aurora.js}: animation loop and rendering logic.
+  \item \texttt{app.js}: initialization, interaction control, pointer parallax, and button micro-animations.
+  \item \texttt{aurora.js}: fallback canvas renderer with noise functions, curtain generation, haze pass, and frame loop.
+  \item \texttt{assets/aurora-loop.webm|mp4}: video-first realistic aurora source.
 \end{itemize}
 
 \section{Design Decisions}
@@ -65,11 +81,17 @@ Accessibility Handler (JS/CSS) & Keyboard support and reduced-motion logic \\
 \hline
 Decision & Rationale \\
 \hline
-Use vanilla JS in v1 & Keeps bundle small and code transparent for learning and SDLC traceability \\
+Use video-first realistic mode with canvas fallback & Delivers cinematic realism while keeping runtime lightweight and resilient \\
+\hline
+Use vanilla JS in v1/v1.2 & Keeps fallback bundle transparent for learning and SDLC traceability \\
 \hline
 Use CSS transitions for base mode switch & Efficient and simple for broad browser support \\
 \hline
 Use requestAnimationFrame & Browser-native animation timing and control \\
+\hline
+Use noise-modulated curtains in v1.2 & Produces less repetitive and more realistic aurora motion patterns \\
+\hline
+Add atmospheric haze and glow falloff & Improves depth perception and color realism without external libraries \\
 \hline
 Include reduced-motion branch & Accessibility and performance fallback \\
 \hline
@@ -101,3 +123,6 @@ Include reduced-motion branch & Accessibility and performance fallback \\
 SDS supports FR-01 to FR-06 and NFR-01 to NFR-04 from SRS.
 
 \end{document}
+
+
+

@@ -19,7 +19,7 @@
 \begin{itemize}[leftmargin=*]
   \item Validate requirements from SRS (FR and NFR IDs).
   \item Combine manual exploratory testing with checklist-based validation.
-  \item Prioritize interaction, accessibility, and performance paths.
+  \item Prioritize interaction, accessibility, performance, and fallback behavior.
 \end{itemize}
 
 \section{Scope of Testing}
@@ -27,13 +27,15 @@
 \begin{itemize}[leftmargin=*]
   \item Button activation by pointer and keyboard.
   \item Night transition correctness.
-  \item Aurora animation behavior and reduced-motion behavior.
+  \item Aurora behavior in video-first mode and canvas fallback mode.
+  \item Interactive visual responses (pointer parallax, cursor glow, and button micro-feedback).
+  \item Reduced-motion behavior and runtime mode switching.
   \item Responsive layout at representative viewport sizes.
 \end{itemize}
 
 \subsection{Out of Scope}
 \begin{itemize}[leftmargin=*]
-  \item Backend or API testing (none in v1).
+  \item Backend or API testing (none in v1/v1.2).
   \item Legacy browser compatibility testing outside target matrix.
 \end{itemize}
 
@@ -42,12 +44,14 @@
   \item OS: Windows baseline workstation.
   \item Browsers: latest Chrome, Edge, Firefox.
   \item Tools: Browser DevTools, Lighthouse, manual keyboard test.
+  \item Media assets under test: \texttt{assets/aurora-loop.webm} and \texttt{assets/aurora-loop.mp4}.
 \end{itemize}
 
 \section{Entry and Exit Criteria}
 \subsection{Entry}
 \begin{itemize}[leftmargin=*]
   \item FR-01 to FR-06 implementation complete.
+  \item Video-first runtime integrated with fallback path.
   \item Build deployable in local browser.
 \end{itemize}
 
@@ -58,7 +62,8 @@
   \item RTM updated with execution status.
 \end{itemize}
 
-\section{Current Execution Snapshot}
+\section{Execution Snapshot}
+\subsection{Baseline (v1.1.0)}
 \begin{itemize}[leftmargin=*]
   \item TC-01: Pass
   \item TC-02: Pass
@@ -72,10 +77,16 @@
   \item TC-10: Pass
 \end{itemize}
 
+\subsection{v1.2 Revalidation (Current)}
+\begin{itemize}[leftmargin=*]
+  \item TC-11 to TC-17 defined for realism and interaction validation.
+  \item Status: Pending execution (WP-09 in progress).
+\end{itemize}
+
 \section{Defect Management}
 \begin{itemize}[leftmargin=*]
   \item Severity levels: Critical, High, Medium, Low.
-  \item Critical/High must be resolved before MVP release.
+  \item Critical/High must be resolved before release publication.
 \end{itemize}
 
 \subsection{Defect Log}
@@ -92,15 +103,14 @@ D-01 & TC-04 keyboard activation inconsistency & Medium & Closed after successfu
 \hline
 Phase & Window & Output \\
 \hline
-Test design & 2026-03-05 to 2026-03-08 & Finalized test cases \\
+Baseline validation (v1.1.0) & 2026-02-18 to 2026-02-18 & TC-01 to TC-10 completed \\
 \hline
-Execution cycle 1 & 2026-03-09 to 2026-03-11 & Defect list and fixes \\
+v1.2 realism and interaction test design & 2026-02-19 to 2026-02-20 & Finalized TC-11 to TC-17 \\
 \hline
-Execution cycle 2 and regression & 2026-03-12 to 2026-03-14 & Final pass report \\
+v1.2 execution and regression & 2026-02-20 to 2026-03-05 & Pass/fail evidence and defect handling \\
+\hline
+Release readiness verification & 2026-03-06 to 2026-03-10 & Final pass report for v1.2 candidate \\
 \hline
 \end{longtable}
 
 \end{document}
-
-
-

@@ -6,18 +6,19 @@ This file defines practical project skills for Codex in this repository.
 - Use when creating or updating project lifecycle documents in `latex/sdlc/`.
 - Keep document order and naming intact.
 - Ensure cross-document consistency:
-  - Charter -> Plan -> PRD -> SRS -> SDS -> Testing -> RTM -> Release -> Operations -> PIR
+  - Charter -> Plan -> PRD -> SRS -> SDS -> Testing -> RTM -> Release -> Operations -> PIR -> vNext Backlog
 - When requirements or implementation behavior change, update impacted docs in the same task.
 
 ## Skill: aurora-ui-implementer
 - Use when implementing or refining the animated website.
 - Core behavior:
   - One-click activation for night mode.
-  - Northern-lights animation starts on activation.
+  - Northern-lights experience starts on activation.
+  - Prefer video-first realism mode with resilient canvas fallback.
 - Engineering expectations:
   - Keep responsive layout for mobile and desktop.
   - Preserve smooth transitions.
-  - Prefer lightweight CSS/JS techniques.
+  - Keep runtime lightweight and dependency-minimal.
 
 ## Skill: qa-evidence-updater
 - Use when test results are reported (pass/fail) and SDLC evidence must be synchronized.
@@ -25,7 +26,7 @@ This file defines practical project skills for Codex in this repository.
   - `latex/sdlc/06_test_plan.tex`
   - `latex/sdlc/07_test_cases.tex`
   - `latex/sdlc/08_rtm.tex`
-  - `latex/sdlc/02_project_plan.tex` (WP-06 status if needed)
+  - `latex/sdlc/02_project_plan.tex` (WP status if needed)
 - Keep requirement/test IDs aligned (`FR-*`, `NFR-*`, `TC-*`).
 
 ## Skill: task-tracker-maintainer
@@ -52,4 +53,6 @@ This file defines practical project skills for Codex in this repository.
   - `latex/sdlc/08_rtm.tex`
   - `latex/sdlc/09_release_deployment_plan.tex`
   - `latex/sdlc/10_operations_maintenance_plan.tex`
+  - `latex/sdlc/11_post_implementation_review.tex`
+  - `latex/sdlc/12_v1_2_backlog.tex`
 - Record unresolved risks and known limitations explicitly.

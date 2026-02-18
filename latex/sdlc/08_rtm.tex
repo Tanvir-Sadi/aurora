@@ -21,7 +21,7 @@
 \end{itemize}
 
 \section{Requirement Traceability Matrix}
-\begin{longtable}{|p{0.12\linewidth}|p{0.22\linewidth}|p{0.24\linewidth}|p{0.16\linewidth}|p{0.16\linewidth}|}
+\begin{longtable}{|p{0.12\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|p{0.22\linewidth}|p{0.14\linewidth}|}
 \hline
 Requirement ID & Requirement Summary & SDS Coverage & Test Coverage & Execution Status \\
 \hline
@@ -29,17 +29,17 @@ FR-01 & Visible primary action button & UI layer and interaction controller & TC
 \hline
 FR-02 & Transition to night mode & Interaction controller and CSS transitions & TC-02 & Pass \\
 \hline
-FR-03 & Start aurora animation & Animation engine module & TC-03 & Pass \\
+FR-03 & Start aurora animation & Animation engine and media runtime strategy & TC-03, TC-11, TC-12 & Pass (baseline), v1.2 revalidation pending \\
 \hline
 FR-04 & Keyboard activation support & Interaction controller and accessibility handler & TC-04 & Pass \\
 \hline
-FR-05 & Responsive layout & UI layer responsive rules & TC-05 & Pass \\
+FR-05 & Responsive and stable interaction layout & UI layer responsive rules and pointer interaction handling & TC-05, TC-16 & Pass (baseline), v1.2 revalidation pending \\
 \hline
-FR-06 & Reduced-motion behavior & Accessibility handler and animation branch & TC-06 & Pass \\
+FR-06 & Reduced-motion behavior & Accessibility handler and animation branch & TC-06, TC-13, TC-17 & Pass (baseline), v1.2 revalidation pending \\
 \hline
-NFR-01 & Interaction <= 200 ms & Event flow and performance tuning & TC-07 & Pass \\
+NFR-01 & Interaction <= 200 ms & Event flow and performance tuning & TC-07, TC-14 & Pass (baseline), v1.2 revalidation pending \\
 \hline
-NFR-02 & Accessibility baseline threshold & Semantic HTML and keyboard/focus rules & TC-08 & Pass \\
+NFR-02 & Accessibility baseline threshold & Semantic HTML and keyboard/focus rules & TC-08, TC-15 & Pass (baseline), v1.2 revalidation pending \\
 \hline
 NFR-03 & Vanilla JS constraint & Architecture and dependency policy & TC-09 & Pass \\
 \hline
@@ -48,9 +48,9 @@ NFR-04 & No uncaught runtime errors & Error-safe execution path & TC-10 & Pass \
 \end{longtable}
 
 \section{Current Gaps}
-All mapped functional and non-functional test cases (TC-01 to TC-10) are passed for the current MVP baseline.
+\begin{itemize}
+  \item Baseline MVP test set (TC-01 to TC-10) is fully passed for \texttt{v1.1.0}.
+  \item v1.2 realism/interaction revalidation cases (TC-11 to TC-17) are planned and pending execution.
+\end{itemize}
 
 \end{document}
-
-
-

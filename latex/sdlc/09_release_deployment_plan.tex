@@ -16,16 +16,19 @@
 \newpage
 
 \section{Release Scope}
-MVP release includes FR-01 to FR-06 and NFR-01 to NFR-04.
+\begin{itemize}[leftmargin=*]
+  \item Published baseline: \texttt{v1.1.0} includes FR-01 to FR-06 and NFR-01 to NFR-04.
+  \item Next target: \texttt{v1.2.0} realism and interaction upgrade (video-first aurora with fallback + interactive effects).
+\end{itemize}
 
 \section{Deployment Strategy}
 \begin{itemize}[leftmargin=*]
   \item Deployment model: static hosting.
-  \item Build output: static HTML/CSS/JS assets.
+  \item Build output: static HTML/CSS/JS plus media assets.
   \item Target repository: \texttt{https://github.com/Tanvir-Sadi/aurora}.
 \end{itemize}
 
-\section{Release Checklist Result}
+\section{Release Checklist Result (Published Baseline)}
 \begin{itemize}[leftmargin=*]
   \item Completed: Test cases TC-01 to TC-10 executed and recorded as pass.
   \item Completed: No open critical or high defects.
@@ -42,21 +45,30 @@ MVP release includes FR-01 to FR-06 and NFR-01 to NFR-04.
   \item Release commit: \texttt{5665d06}.
 \end{itemize}
 
+\section{v1.2 Candidate Checklist (Current)}
+\begin{itemize}[leftmargin=*]
+  \item Completed: Realism implementation delivered in runtime (B-01 to B-03).
+  \item Completed: Interaction layer delivered (pointer parallax, cursor glow, button micro-feedback).
+  \item Completed: Media assets added (\texttt{assets/aurora-loop.webm}, \texttt{assets/aurora-loop.mp4}).
+  \item Pending: Execute TC-11 to TC-17 and capture evidence.
+  \item Pending: Confirm performance/accessibility guardrails after realism and interaction updates.
+  \item Pending: Prepare \texttt{v1.2.0} release notes and publish tag.
+\end{itemize}
+
 \section{Rollback Plan}
 \begin{itemize}[leftmargin=*]
   \item Keep previous deployment artifact available.
-  \item Revert to prior stable release tag (\texttt{v1.0.0}) if needed.
+  \item Revert to prior stable release tag (\texttt{v1.1.0}) if needed.
   \item Publish rollback note with issue summary.
 \end{itemize}
 
-\section{Go-Live Validation Result}
+\section{Go-Live Validation}
 \begin{itemize}[leftmargin=*]
-  \item Production activation flow validated on Chrome, Edge, and Firefox.
-  \item Night-sky transition and aurora visibility verified.
-  \item Keyboard and reduced-motion paths verified.
+  \item \texttt{v1.1.0}: Production activation flow validated on Chrome, Edge, and Firefox.
+  \item \texttt{v1.2.0}: Validation pending completion of TC-11 to TC-17.
 \end{itemize}
 
 \section{Release Ownership}
-Release manager for MVP: Tanvir Sadi.
+Release manager: Tanvir Sadi.
 
 \end{document}

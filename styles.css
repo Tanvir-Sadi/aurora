@@ -1,12 +1,19 @@
 ﻿:root {
   --bg-day-top: #f4f9ff;
   --bg-day-bottom: #9bc1ff;
-  --bg-night-top: #030712;
-  --bg-night-bottom: #0b1a38;
+  --bg-night-top: #010307;
+  --bg-night-bottom: #02060c;
   --text-light: #f2f6ff;
   --text-dark: #10172a;
   --accent: #7fffd4;
   --accent-strong: #00c4a1;
+  --parallax-x: 0px;
+  --parallax-y: 0px;
+  --cursor-x: 50%;
+  --cursor-y: 35%;
+  --cursor-alpha: 0;
+  --aurora-scale: 1.22;
+  --aurora-rotate: -8deg;
 }
 
 * {
@@ -37,6 +44,21 @@ body.night-active {
   position: fixed;
   inset: 0;
   pointer-events: none;
+  isolation: isolate;
+}
+
+.sky-scene::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  opacity: var(--cursor-alpha);
+  background:
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(118, 255, 226, 0.24), rgba(0, 0, 0, 0) 26%),
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(78, 184, 255, 0.15), rgba(0, 0, 0, 0) 40%);
+  mix-blend-mode: screen;
+  transition: opacity 300ms ease;
+  z-index: 0;
 }
 
 .stars {
@@ -50,11 +72,32 @@ body.night-active {
     radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.7) 1px, transparent 1.5px),
     radial-gradient(circle at 60% 52%, rgba(255, 255, 255, 0.85) 1px, transparent 1.5px);
   background-size: 420px 320px;
-  transition: opacity 800ms ease;
+  transform: translate3d(calc(var(--parallax-x) * -0.35), calc(var(--parallax-y) * -0.35), 0) scale(1.04);
+  transition: opacity 800ms ease, transform 260ms ease;
 }
 
 body.night-active .stars {
-  opacity: 0.85;
+  opacity: 0.36;
+  animation: starFieldDrift 28s linear infinite;
+}
+
+.aurora-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: translate3d(calc(var(--parallax-x) * 0.22), calc(var(--parallax-y) * 0.14), 0) scale(var(--aurora-scale)) rotate(var(--aurora-rotate));
+  transform-origin: center;
+  mix-blend-mode: screen;
+  filter: brightness(0.7) contrast(1.2) saturate(1.35) blur(0.6px);
+  transition: opacity 900ms ease, transform 280ms ease;
+  z-index: 1;
+}
+
+body.night-active.aurora-video-active .aurora-video {
+  opacity: 0.88;
 }
 
 #aurora-canvas {
@@ -63,11 +106,17 @@ body.night-active .stars {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 650ms ease;
+  transform: translate3d(calc(var(--parallax-x) * 0.14), calc(var(--parallax-y) * 0.1), 0);
+  transition: opacity 650ms ease, transform 280ms ease;
+  z-index: 1;
 }
 
 body.night-active #aurora-canvas {
   opacity: 1;
+}
+
+body.night-active.aurora-video-active #aurora-canvas {
+  opacity: 0;
 }
 
 .content {
@@ -80,7 +129,8 @@ body.night-active #aurora-canvas {
   background: rgba(255, 255, 255, 0.42);
   backdrop-filter: blur(8px);
   box-shadow: 0 16px 44px rgba(0, 0, 0, 0.16);
-  transition: background 700ms ease, box-shadow 700ms ease;
+  transition: background 700ms ease, box-shadow 700ms ease, transform 260ms ease;
+  transform: translate3d(calc(var(--parallax-x) * 0.02), calc(var(--parallax-y) * 0.02), 0);
 }
 
 body.night-active .content {
@@ -107,6 +157,12 @@ h1 {
 }
 
 .activate-btn {
+  --btn-tilt-x: 0deg;
+  --btn-tilt-y: 0deg;
+  --btn-rise: 0px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   margin-top: 1.4rem;
   padding: 0.85rem 1.2rem;
   border: none;
@@ -116,17 +172,46 @@ h1 {
   color: #02231f;
   background: linear-gradient(120deg, var(--accent), var(--accent-strong));
   cursor: pointer;
-  transition: transform 120ms ease, box-shadow 200ms ease;
+  transform: perspective(600px) rotateX(var(--btn-tilt-x)) rotateY(var(--btn-tilt-y)) translateY(var(--btn-rise));
+  transition: transform 180ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+.activate-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 70%);
+  transform: translateX(-130%);
+  transition: transform 420ms ease;
+  z-index: -1;
 }
 
 .activate-btn:hover {
-  transform: translateY(-1px);
+  --btn-rise: -1px;
   box-shadow: 0 10px 24px rgba(0, 196, 161, 0.35);
+}
+
+.activate-btn:hover::after {
+  transform: translateX(130%);
 }
 
 .activate-btn:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 3px;
+}
+
+.activate-btn:active {
+  --btn-rise: 0px;
+  filter: saturate(1.08);
+}
+
+.btn-ripple {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+  animation: btnRipple 600ms ease-out forwards;
 }
 
 .status {
@@ -135,7 +220,38 @@ h1 {
   opacity: 0.85;
 }
 
+@keyframes btnRipple {
+  from {
+    transform: scale(0.08);
+    opacity: 0.6;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes starFieldDrift {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: -26px 14px;
+  }
+
+  100% {
+    background-position: -52px 28px;
+  }
+}
+
 @media (max-width: 700px) {
+  :root {
+    --aurora-scale: 1.28;
+    --aurora-rotate: -10deg;
+  }
+
   .content {
     margin-top: 8vh;
     padding: 1.35rem;
@@ -146,5 +262,22 @@ h1 {
   * {
     animation: none !important;
     transition-duration: 10ms !important;
+  }
+
+  :root {
+    --parallax-x: 0px;
+    --parallax-y: 0px;
+    --cursor-alpha: 0;
+  }
+
+  .aurora-video {
+    transform: none;
+    filter: brightness(0.7) contrast(1.12) saturate(1.2);
+  }
+
+  #aurora-canvas,
+  .content,
+  .stars {
+    transform: none;
   }
 }

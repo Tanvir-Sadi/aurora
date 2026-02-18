@@ -7,11 +7,13 @@
 
 ## Current Status
 - Requirements locked: `FR-01..FR-06`, `NFR-01..NFR-04`.
-- Sprint 1 implementation started.
-- Current test evidence:
-  - `TC-01` to `TC-06`: Pass
-  - `TC-07` to `TC-10`: Pending
-- First release tag published: `v1.0.0`.
+- Baseline release published: `v1.1.0` (2026-02-18).
+- Baseline test evidence:
+  - `TC-01` to `TC-10`: Pass (`v1.1.0`).
+- v1.2 realism/interaction update (current implementation state):
+  - Video-first aurora playback implemented with canvas fallback.
+  - Interaction layer implemented (pointer parallax, cursor glow, button tilt/ripple).
+  - Backlog items `B-01`, `B-02`, `B-03`, and `B-05` implemented; validation pending.
 
 ## Source of Truth
 - SDLC documents: `latex/sdlc/`
@@ -20,6 +22,9 @@
   - `styles.css`
   - `app.js`
   - `aurora.js`
+  - `assets/aurora-loop.webm`
+  - `assets/aurora-loop.mp4`
+  - `scripts/generate-aurora-video.py`
 - Task tracking:
   - `TASK_TRACKER.md` (auto-generated)
   - `scripts/update-task-tracker.ps1`
@@ -37,6 +42,7 @@
 9. `latex/sdlc/09_release_deployment_plan.tex`
 10. `latex/sdlc/10_operations_maintenance_plan.tex`
 11. `latex/sdlc/11_post_implementation_review.tex`
+12. `latex/sdlc/12_v1_2_backlog.tex`
 
 ## Project Constraints
 - Build as a frontend-first website (no required backend for MVP).
@@ -47,7 +53,8 @@
 ## Functional Baseline
 - Provide a visible primary action button.
 - On click, transition page background to a night-sky scene.
-- Trigger and render aurora animation.
+- Trigger aurora experience in active mode (video-first with canvas fallback).
+- Provide lightweight interactive feedback (pointer parallax + button micro-animations) when motion preferences allow.
 - Keep behavior responsive on desktop and mobile.
 
 ## Non-Functional Baseline
@@ -57,7 +64,7 @@
   - Support reduced-motion behavior.
 - Performance:
   - Start transition quickly after click.
-  - Avoid heavy effects that degrade low-end devices.
+  - Keep runtime lightweight (prefer media/canvas over heavy runtime libraries).
 - Quality:
   - Keep code modular and readable.
   - Add concise comments only when logic is non-obvious.
@@ -66,7 +73,7 @@
 - Before major implementation changes, align updates with SDLC docs.
 - If requirements or behavior change, update affected docs in `latex/sdlc/` in the same task.
 - Do not delete/rename SDLC files unless explicitly requested.
-- Keep generated build artifacts out of versioned source.
+- Keep generated build artifacts out of versioned source, except intentional runtime assets.
 - Do not edit `TASK_TRACKER.md` manually.
 - After meaningful activity, refresh task tracker:
   - `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/update-task-tracker.ps1`

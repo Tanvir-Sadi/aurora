@@ -9,6 +9,20 @@
 <body>
   <div class="sky-scene" aria-hidden="true">
     <div class="stars"></div>
+
+    <video
+      id="aurora-video"
+      class="aurora-video"
+      muted
+      loop
+      playsinline
+      preload="none"
+      aria-hidden="true"
+    >
+      <source src="assets/aurora-loop.webm" type="video/webm" />
+      <source src="assets/aurora-loop.mp4" type="video/mp4" />
+    </video>
+
     <canvas id="aurora-canvas"></canvas>
   </div>
 

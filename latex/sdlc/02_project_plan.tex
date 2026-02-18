@@ -18,8 +18,8 @@
 \section{Plan Baseline}
 \begin{itemize}[leftmargin=*]
   \item Lifecycle Model: Iterative mini-milestones (weekly checkpoints).
-  \item Delivery Strategy: MVP first, then polish in controlled increments.
-  \item Technology Baseline: Vanilla HTML/CSS/JS for v1.
+  \item Delivery Strategy: MVP first, then realism-focused upgrades in controlled increments.
+  \item Technology Baseline: Vanilla HTML/CSS/JS with video-first playback and canvas fallback for v1.2.
 \end{itemize}
 
 \section{Work Breakdown Structure}
@@ -41,6 +41,14 @@ WP-06 & Execute testing and update RTM & Tanvir & Completed (TC-01 to TC-10 pass
 \hline
 WP-07 & Deploy MVP and publish release notes & Tanvir & Completed (released as v1.1.0 on 2026-02-18) \\
 \hline
+WP-08 & Implement realistic aurora runtime (video-first + canvas fallback), interaction effects (parallax/cursor glow/button feedback), and media assets & Tanvir & Completed (implementation delivered on 2026-02-18) \\
+\hline
+WP-09 & Execute v1.2 regression and realism validation (performance/accessibility guardrails) & Tanvir & In Progress \\
+\hline
+WP-10 & Prepare v1.2 release package, tag, and release notes & Tanvir & Planned \\
+\hline
+WP-11 & Complete v1.2 post-release verification and documentation sync & Tanvir & Planned \\
+\hline
 \end{longtable}
 
 \section{Schedule}
@@ -48,22 +56,20 @@ WP-07 & Deploy MVP and publish release notes & Tanvir & Completed (released as v
 \hline
 Activity Window & Date Range & Output \\
 \hline
-Planning and specification & 2026-02-18 to 2026-02-24 & Updated charter, plan, PRD, SRS, SDS \\
+MVP planning and baseline release & 2026-02-18 to 2026-02-18 & v1.1.0 released with TC-01 to TC-10 pass \\
 \hline
-Implementation sprint 1 & 2026-02-25 to 2026-03-02 & Button trigger and night-mode transition \\
+v1.2 realism and interaction implementation & 2026-02-18 to 2026-02-19 & Video-first aurora runtime, fallback path, and interactive effects delivered \\
 \hline
-Implementation sprint 2 & 2026-03-03 to 2026-03-07 & Aurora animation and interaction polish \\
+v1.2 validation and tuning & 2026-02-19 to 2026-03-05 & Regression evidence, Lighthouse guardrail checks, defect fixes \\
 \hline
-QA and hardening & 2026-03-08 to 2026-03-14 & Test evidence, accessibility and performance checks \\
-\hline
-Release preparation and go-live & 2026-03-15 to 2026-03-20 & Deployment and release checklist complete \\
+v1.2 release preparation & 2026-03-06 to 2026-03-10 & Release checklist, notes, deployment, post-release sync \\
 \hline
 \end{longtable}
 
 \section{Resource Plan}
 \begin{itemize}[leftmargin=*]
   \item Primary resource: Tanvir Sadi (development, QA, documentation).
-  \item Optional reviewer support for UX and acceptance sign-off.
+  \item Optional reviewer support for visual quality and acceptance sign-off.
 \end{itemize}
 
 \section{Risk and Mitigation Plan}
@@ -71,11 +77,11 @@ Release preparation and go-live & 2026-03-15 to 2026-03-20 & Deployment and rele
 \hline
 Risk ID & Risk & Mitigation \\
 \hline
-R-01 & Animation performance below target & Use simpler layers, lower particle/detail count, reduced-motion mode \\
+R-01 & Realism and interaction updates reduce performance below target & Prefer compressed video playback, keep canvas fallback lightweight, enforce Lighthouse guardrails \\
 \hline
-R-02 & Visual mismatch across browsers & Maintain browser matrix and fallback CSS behavior \\
+R-02 & Visual mismatch across browsers or codec support gaps & Ship both WebM and MP4, auto-fallback to canvas path \\
 \hline
-R-03 & Scope expansion & Enforce MVP scope freeze after 2026-02-24 baseline \\
+R-03 & Scope expansion in v1.2 & Constrain to prioritized backlog items and defer non-critical controls until validation closes \\
 \hline
 \end{longtable}
 
@@ -83,14 +89,7 @@ R-03 & Scope expansion & Enforce MVP scope freeze after 2026-02-24 baseline \\
 \begin{itemize}[leftmargin=*]
   \item Weekly internal status update.
   \item Milestone completion summary in SDLC documents.
-  \item Release note for go-live milestone.
+  \item Release notes update for each published tag.
 \end{itemize}
 
 \end{document}
-
-
-
-
-
-
-

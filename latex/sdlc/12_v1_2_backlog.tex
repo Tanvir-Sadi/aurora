@@ -21,8 +21,8 @@ This document defines the prioritized backlog for v1.2 and measurable quality ta
 \section{Baseline and Scope}
 \begin{itemize}[leftmargin=*]
   \item Baseline release: \texttt{v1.1.0}.
-  \item Scope type: realistic aurora rendering, UX polish, and release process improvements.
-  \item Constraint: keep implementation lightweight with vanilla JS and maintain accessibility baseline.
+  \item Scope type: realistic aurora rendering, interaction polish, and release process improvements.
+  \item Constraint: keep implementation lightweight and maintain accessibility baseline.
 \end{itemize}
 
 \section{Measurable Targets (v1.2)}
@@ -36,6 +36,8 @@ RL-02 & Color realism & Fixed palette blend & Dynamic gradient flow (green/cyan 
 \hline
 RL-03 & Motion naturalness & Repeating wave movement & Less repetitive drift with noise-driven phase variation \\
 \hline
+UX-02 & Interaction polish & Static scene feedback & Subtle pointer parallax and button micro-feedback without usability regressions \\
+\hline
 PT-01 & Lighthouse Performance score & 94 & >= 93 while realism updates are enabled \\
 \hline
 PT-02 & Activation response (NFR-01 path) & <= 200 ms (pass) & <= 200 ms median on baseline test machine \\
@@ -47,37 +49,48 @@ OPS-01 & Release documentation speed & Manual template edits & Scripted notes ge
 \end{longtable}
 
 \section{Prioritized Backlog}
-\begin{longtable}{|p{0.10\linewidth}|p{0.44\linewidth}|p{0.12\linewidth}|p{0.12\linewidth}|p{0.14\linewidth}|}
+\begin{longtable}{|p{0.10\linewidth}|p{0.36\linewidth}|p{0.10\linewidth}|p{0.11\linewidth}|p{0.17\linewidth}|p{0.11\linewidth}|}
 \hline
-ID & Backlog Item & Priority & Type & Acceptance Criteria \\
+ID & Backlog Item & Priority & Type & Acceptance Criteria & Status \\
 \hline
-B-01 & Implement multi-layer, noise-modulated aurora curtains for realistic shape dynamics. & High & Visual Realism & At least four distinct moving layers with non-repetitive contour behavior. \\
+B-01 & Implement multi-layer, noise-modulated aurora curtains for realistic shape dynamics. & High & Visual Realism & At least four distinct moving layers with non-repetitive contour behavior. & Implemented (QA pending) \\
 \hline
-B-02 & Add vertical light-veil variation and atmospheric haze to increase depth perception. & High & Visual Realism & Visible depth separation and soft upper-atmosphere haze in active mode. \\
+B-02 & Add vertical light-veil variation and atmospheric haze to increase depth perception. & High & Visual Realism & Visible depth separation and soft upper-atmosphere haze in active mode. & Implemented (QA pending) \\
 \hline
-B-03 & Improve color blending model for realistic aurora transitions and glow falloff. & High & Visual Realism & Smooth color transitions without banding or harsh clipping artifacts. \\
+B-03 & Improve color blending model for realistic aurora transitions and glow falloff. & High & Visual Realism & Smooth color transitions without banding or harsh clipping artifacts. & Implemented (QA pending) \\
 \hline
-B-04 & Introduce optional visual tuning controls for animation intensity. & Medium & UX & User can adjust intensity without breaking reduced-motion behavior. \\
+B-04 & Introduce optional visual tuning controls for animation intensity. & Medium & UX & User can adjust intensity without breaking reduced-motion behavior. & Planned \\
 \hline
-B-05 & Improve focus-visible styling and keyboard feedback consistency. & Medium & Accessibility & Keyboard-only flow remains fully operable and obvious. \\
+B-05 & Improve focus-visible styling and keyboard feedback consistency. & Medium & Accessibility & Keyboard-only flow remains fully operable and obvious, with consistent interaction feedback. & Implemented (QA pending) \\
 \hline
-B-06 & Add scripted release notes generation to release process. & Medium & Operations & \texttt{new-release-notes.ps1} generates usable notes file successfully. \\
+B-06 & Add scripted release notes generation to release process. & Medium & Operations & \texttt{new-release-notes.ps1} generates usable notes file successfully. & Completed \\
 \hline
-B-07 & Add post-release smoke checklist to release package. & Low & Operations & Smoke checklist executed and documented per release. \\
+B-07 & Add post-release smoke checklist to release package. & Low & Operations & Smoke checklist executed and documented per release. & Planned \\
 \hline
 \end{longtable}
 
+\section{Implementation Status Snapshot (2026-02-18)}
+\begin{itemize}[leftmargin=*]
+  \item B-01/B-02/B-03 delivered as video-first runtime with canvas fallback in \texttt{index.html}, \texttt{app.js}, and \texttt{aurora.js}.
+  \item Interaction layer delivered in \texttt{app.js}/\texttt{styles.css}: pointer parallax, cursor glow, and button micro-feedback.
+  \item Realistic loop assets generated and stored as \texttt{assets/aurora-loop.webm} and \texttt{assets/aurora-loop.mp4}.
+  \item Asset generation workflow captured in \texttt{scripts/generate-aurora-video.py}.
+  \item Remaining work for implemented items: objective validation against RL-01 to RL-03, UX-02, and PT/UX guardrails.
+  \item Next coding focus after validation: B-04 and B-07.
+\end{itemize}
+
 \section{Execution Plan}
 \begin{itemize}[leftmargin=*]
-  \item Sprint window: 2026-02-20 to 2026-03-10.
-  \item Milestone 1: Realism rendering updates (B-01, B-02, B-03).
-  \item Milestone 2: UX and accessibility polish (B-04, B-05).
-  \item Milestone 3: Operations improvements (B-06, B-07).
+  \item Sprint window: 2026-02-19 to 2026-03-10.
+  \item Milestone 1: Realism implementation (B-01, B-02, B-03) - delivered.
+  \item Milestone 2: Interaction/accessibility polish (B-05) - delivered pending QA.
+  \item Milestone 3: Validation and tuning pass (TC-11 to TC-17).
+  \item Milestone 4: Remaining UX and operations improvements (B-04, B-07).
 \end{itemize}
 
 \section{Validation Plan for v1.2}
 \begin{itemize}[leftmargin=*]
-  \item Re-run TC-01 to TC-10 and add realism-specific test cases for visual fidelity and reduced-motion behavior.
+  \item Re-run TC-01 to TC-10 and execute TC-11 to TC-17 for realism and interaction behavior.
   \item Capture Lighthouse report evidence for performance and accessibility guardrails.
   \item Update RTM and release notes with final pass/fail evidence.
 \end{itemize}

@@ -5,18 +5,18 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 ## Snapshot
 
-- Generated: 2026-02-18 14:42:50 +09:00
+- Generated: 2026-02-18 15:32:44 +09:00
 - Branch: main
-- Last commit: 79aec4c
+- Last commit: e57fe98
 - Latest release tag: v1.1.0
 - Requirements locked count: FR=6, NFR=4
 
 ## Work Package Summary
 
-- Completed: 7
-- In Progress: 0
-- Planned: 0
-- Next Focus: No pending work package found.
+- Completed: 8
+- In Progress: 1
+- Planned: 2
+- Next Focus: WP-09 - Execute v1.2 regression and realism validation (performance/accessibility guardrails)
 
 | ID | Task | Owner | Status |
 |---|---|---|---|
@@ -27,10 +27,14 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 | WP-05 | Add responsive and reduced-motion behavior | Tanvir | Completed |
 | WP-06 | Execute testing and update RTM | Tanvir | Completed (TC-01 to TC-10 passed) |
 | WP-07 | Deploy MVP and publish release notes | Tanvir | Completed (released as v1.1.0 on 2026-02-18) |
+| WP-08 | Implement realistic aurora runtime (video-first + canvas fallback), interaction effects (parallax/cursor glow/button feedback), and media assets | Tanvir | Completed (implementation delivered on 2026-02-18) |
+| WP-09 | Execute v1.2 regression and realism validation (performance/accessibility guardrails) | Tanvir | In Progress |
+| WP-10 | Prepare v1.2 release package, tag, and release notes | Tanvir | Planned |
+| WP-11 | Complete v1.2 post-release verification and documentation sync | Tanvir | Planned |
 
 ## Git Working Tree
 
-- Staged changes: 3
+- Staged changes: 21
 - Unstaged changes: 0
 - Untracked files: 0
 
@@ -38,6 +42,7 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 | Commit | Date | Message |
 |---|---|---|
+| e57fe98 | 2026-02-18 | docs: align PIR and v1.2 backlog to realism-first aurora plan |
 | 79aec4c | 2026-02-18 | docs: add A-01/A-02 artifacts and fix PIR action-items table layout |
 | 564fa11 | 2026-02-18 | docs: finalize post-release SDLC updates and refresh tracker for v1.1.0 |
 | 5665d06 | 2026-02-18 | docs: close WP-02..WP-05 and update tracker focus to WP-07 |
@@ -45,7 +50,6 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 | 3990741 | 2026-02-18 | test/docs: sync TC-03..TC-06 status and update agent skills workflow |
 | 55141c1 | 2026-02-18 | ドキュメントとタスクトラッカーの更新 |
 | f42c61c | 2026-02-18 | hook test |
-| fb2e669 | 2026-02-18 | docs: add project README with setup, SDLC, and UML workflow |
 
 ## Release Tags
 

@@ -16,13 +16,14 @@
 \newpage
 
 \section{Operational Model}
-Aurora v1 is a static frontend application with lightweight operational needs.
+Aurora is a static frontend application with lightweight operational needs.
 
 \section{Current Production Baseline}
 \begin{itemize}[leftmargin=*]
   \item Current version: \texttt{v1.1.0}.
   \item Release date: 2026-02-18.
   \item Hosting model: static site from repository artifacts.
+  \item Runtime rendering: canvas aurora in baseline release, with v1.2 introducing video-first mode and interactive visual effects.
   \item Known critical/high production defects at release: none.
 \end{itemize}
 
@@ -31,12 +32,16 @@ Aurora v1 is a static frontend application with lightweight operational needs.
   \item Uptime check on production URL.
   \item Basic client-side error review from browser/session logs when available.
   \item Periodic Lighthouse checks after major changes.
+  \item Confirm media delivery success for \texttt{assets/aurora-loop.webm} and \texttt{assets/aurora-loop.mp4} after deploy.
+  \item Spot-check pointer and keyboard interaction flows after each deployment.
 \end{itemize}
 
 \section{Incident and Problem Management}
 \begin{itemize}[leftmargin=*]
   \item Classify incidents by severity: Critical, High, Medium, Low.
   \item Critical issues (site unavailable or broken core interaction) require immediate rollback or hotfix.
+  \item If video playback fails broadly, switch to canvas fallback path and treat as High severity defect.
+  \item If interaction effects degrade usability or accessibility, disable/rollback the effect layer and track root cause.
   \item Record root cause and preventive action in follow-up notes.
 \end{itemize}
 
@@ -44,14 +49,15 @@ Aurora v1 is a static frontend application with lightweight operational needs.
 \begin{itemize}[leftmargin=*]
   \item Keep previous deploy artifacts or release tags.
   \item Recovery path is redeploying last known stable static bundle.
-  \item Primary rollback tag for current release: \texttt{v1.0.0}.
+  \item Primary rollback tag for next release candidate: \texttt{v1.1.0}.
 \end{itemize}
 
 \section{Patch and Upgrade Plan}
 \begin{itemize}[leftmargin=*]
   \item Weekly review window for improvements and fixes.
-  \item Re-run regression set for every visible animation or interaction change.
-  \item Revisit decision to stay on vanilla JS only if constraints are no longer met.
+  \item Re-run regression set for every visible animation, media, or interaction change.
+  \item For v1.2, close TC-11 to TC-17 before release publication.
+  \item Revisit architecture only if realism/performance constraints cannot be met with current approach.
 \end{itemize}
 
 \section{Support SLA (Project-Level)}

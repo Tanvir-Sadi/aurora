@@ -17,7 +17,7 @@
 \section{Test Case Template}
 Fields: ID, Requirement ID, Preconditions, Steps, Expected Result, Status.
 
-\section{Functional Test Cases}
+\section{Functional Test Cases (Baseline)}
 \begin{longtable}{|p{0.10\linewidth}|p{0.12\linewidth}|p{0.58\linewidth}|p{0.14\linewidth}|}
 \hline
 Test ID & Req ID & Expected Result & Status \\
@@ -36,7 +36,7 @@ TC-06 & FR-06 & Reduced-motion preference lowers or disables heavy motion effect
 \hline
 \end{longtable}
 
-\section{Non-Functional Test Cases}
+\section{Non-Functional Test Cases (Baseline)}
 \begin{longtable}{|p{0.10\linewidth}|p{0.12\linewidth}|p{0.58\linewidth}|p{0.14\linewidth}|}
 \hline
 Test ID & Req ID & Expected Result & Status \\
@@ -48,6 +48,27 @@ TC-08 & NFR-02 & Accessibility baseline checks pass target threshold. & Pass \\
 TC-09 & NFR-03 & No heavy runtime animation library is present in v1 bundle. & Pass \\
 \hline
 TC-10 & NFR-04 & No uncaught errors appear in normal flow console trace. & Pass \\
+\hline
+\end{longtable}
+
+\section{v1.2 Extension Test Cases (Realism + Interactions)}
+\begin{longtable}{|p{0.10\linewidth}|p{0.12\linewidth}|p{0.58\linewidth}|p{0.14\linewidth}|}
+\hline
+Test ID & Req ID & Expected Result & Status \\
+\hline
+TC-11 & FR-03 & With valid video assets, activation uses video-first aurora and updates status accordingly. & Pending \\
+\hline
+TC-12 & FR-03 & If video assets are missing or fail, canvas fallback starts automatically without blocking activation. & Pending \\
+\hline
+TC-13 & FR-06 & In reduced-motion mode, video path is not used and reduced canvas mode runs. & Pending \\
+\hline
+TC-14 & NFR-01 & Activation remains within 200 ms median while video-first path is enabled. & Pending \\
+\hline
+TC-15 & NFR-02 & Accessibility score remains >= 90 and keyboard parity remains intact after realism update. & Pending \\
+\hline
+TC-16 & FR-05 & Pointer movement drives subtle scene parallax/cursor glow and interaction reset behaves correctly on blur/visibility change. & Pending \\
+\hline
+TC-17 & FR-06 & Reduced-motion mode suppresses interaction-heavy effects (parallax/ripple/tilt) while preserving activation behavior. & Pending \\
 \hline
 \end{longtable}
 
@@ -65,12 +86,10 @@ TC-10 & NFR-04 & No uncaught errors appear in normal flow console trace. & Pass 
   \item 2026-02-18: TC-08 passed (Lighthouse accessibility baseline verified).
   \item 2026-02-18: TC-09 passed (vanilla JS dependency constraint verified).
   \item 2026-02-18: TC-10 passed (no uncaught runtime errors observed in normal flow).
+  \item 2026-02-18: TC-11 to TC-17 defined for v1.2 realism and interaction runtime; execution pending.
 \end{itemize}
 
 \section{Regression Set}
-Run TC-01 to TC-10 after each significant animation or styling change.
+Run TC-01 to TC-17 after each significant animation, media, or interaction change.
 
 \end{document}
-
-
-
