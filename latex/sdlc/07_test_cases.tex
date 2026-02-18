@@ -18,38 +18,44 @@
 Fields: ID, Requirement ID, Preconditions, Steps, Expected Result, Status.
 
 \section{Functional Test Cases}
-\begin{longtable}{|p{0.12\linewidth}|p{0.12\linewidth}|p{0.68\linewidth}|}
+\begin{longtable}{|p{0.10\linewidth}|p{0.12\linewidth}|p{0.58\linewidth}|p{0.14\linewidth}|}
 \hline
-Test ID & Req ID & Expected Result \\
+Test ID & Req ID & Expected Result & Status \\
 \hline
-TC-01 & FR-01 & Primary action button is visible and clearly labeled on initial load. \\
+TC-01 & FR-01 & Primary action button is visible and clearly labeled on initial load. & Pass \\
 \hline
-TC-02 & FR-02 & Clicking the button transitions scene to night-sky mode. \\
+TC-02 & FR-02 & Clicking the button transitions scene to night-sky mode. & Pass \\
 \hline
-TC-03 & FR-03 & Aurora animation starts after activation and remains visible. \\
+TC-03 & FR-03 & Aurora animation starts after activation and remains visible. & Not executed \\
 \hline
-TC-04 & FR-04 & Keyboard activation (Enter/Space) triggers the same transition. \\
+TC-04 & FR-04 & Keyboard activation (Enter/Space) triggers the same transition. & Not executed \\
 \hline
-TC-05 & FR-05 & Layout remains usable on mobile and desktop test sizes. \\
+TC-05 & FR-05 & Layout remains usable on mobile and desktop test sizes. & Not executed \\
 \hline
-TC-06 & FR-06 & Reduced-motion preference lowers or disables heavy motion effects. \\
+TC-06 & FR-06 & Reduced-motion preference lowers or disables heavy motion effects. & Not executed \\
 \hline
 \end{longtable}
 
 \section{Non-Functional Test Cases}
-\begin{longtable}{|p{0.12\linewidth}|p{0.12\linewidth}|p{0.68\linewidth}|}
+\begin{longtable}{|p{0.10\linewidth}|p{0.12\linewidth}|p{0.58\linewidth}|p{0.14\linewidth}|}
 \hline
-Test ID & Req ID & Expected Result \\
+Test ID & Req ID & Expected Result & Status \\
 \hline
-TC-07 & NFR-01 & Activation response begins within 200 ms under baseline conditions. \\
+TC-07 & NFR-01 & Activation response begins within 200 ms under baseline conditions. & Not executed \\
 \hline
-TC-08 & NFR-02 & Accessibility baseline checks pass target threshold. \\
+TC-08 & NFR-02 & Accessibility baseline checks pass target threshold. & Not executed \\
 \hline
-TC-09 & NFR-03 & No heavy runtime animation library is present in v1 bundle. \\
+TC-09 & NFR-03 & No heavy runtime animation library is present in v1 bundle. & Not executed \\
 \hline
-TC-10 & NFR-04 & No uncaught errors appear in normal flow console trace. \\
+TC-10 & NFR-04 & No uncaught errors appear in normal flow console trace. & Not executed \\
 \hline
 \end{longtable}
+
+\section{Execution Log}
+\begin{itemize}
+  \item 2026-02-18: TC-01 passed.
+  \item 2026-02-18: TC-02 passed.
+\end{itemize}
 
 \section{Regression Set}
 Run TC-01 to TC-10 after each significant animation or styling change.

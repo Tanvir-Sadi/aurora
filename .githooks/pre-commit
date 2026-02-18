@@ -1,0 +1,8 @@
+﻿#!/usr/bin/env sh
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/update-task-tracker.ps1
+if [ $? -ne 0 ]; then
+  echo "Failed to update TASK_TRACKER.md"
+  exit 1
+fi
+
+git add TASK_TRACKER.md

@@ -21,33 +21,33 @@
 \end{itemize}
 
 \section{Requirement Traceability Matrix}
-\begin{longtable}{|p{0.14\linewidth}|p{0.28\linewidth}|p{0.26\linewidth}|p{0.22\linewidth}|}
+\begin{longtable}{|p{0.12\linewidth}|p{0.22\linewidth}|p{0.24\linewidth}|p{0.16\linewidth}|p{0.16\linewidth}|}
 \hline
-Requirement ID & Requirement Summary & SDS Coverage & Test Coverage \\
+Requirement ID & Requirement Summary & SDS Coverage & Test Coverage & Execution Status \\
 \hline
-FR-01 & Visible primary action button & UI layer and interaction controller & TC-01 \\
+FR-01 & Visible primary action button & UI layer and interaction controller & TC-01 & Pass \\
 \hline
-FR-02 & Transition to night mode & Interaction controller and CSS transitions & TC-02 \\
+FR-02 & Transition to night mode & Interaction controller and CSS transitions & TC-02 & Pass \\
 \hline
-FR-03 & Start aurora animation & Animation engine module & TC-03 \\
+FR-03 & Start aurora animation & Animation engine module & TC-03 & Pending \\
 \hline
-FR-04 & Keyboard activation support & Interaction controller and accessibility handler & TC-04 \\
+FR-04 & Keyboard activation support & Interaction controller and accessibility handler & TC-04 & Pending \\
 \hline
-FR-05 & Responsive layout & UI layer responsive rules & TC-05 \\
+FR-05 & Responsive layout & UI layer responsive rules & TC-05 & Pending \\
 \hline
-FR-06 & Reduced-motion behavior & Accessibility handler and animation branch & TC-06 \\
+FR-06 & Reduced-motion behavior & Accessibility handler and animation branch & TC-06 & Pending \\
 \hline
-NFR-01 & Interaction <= 200 ms & Event flow and performance tuning & TC-07 \\
+NFR-01 & Interaction <= 200 ms & Event flow and performance tuning & TC-07 & Pending \\
 \hline
-NFR-02 & Accessibility baseline threshold & Semantic HTML and keyboard/focus rules & TC-08 \\
+NFR-02 & Accessibility baseline threshold & Semantic HTML and keyboard/focus rules & TC-08 & Pending \\
 \hline
-NFR-03 & Vanilla JS constraint & Architecture and dependency policy & TC-09 \\
+NFR-03 & Vanilla JS constraint & Architecture and dependency policy & TC-09 & Pending \\
 \hline
-NFR-04 & No uncaught runtime errors & Error-safe execution path & TC-10 \\
+NFR-04 & No uncaught runtime errors & Error-safe execution path & TC-10 & Pending \\
 \hline
 \end{longtable}
 
 \section{Current Gaps}
-No functional gaps identified at documentation stage. Implementation and test execution pending.
+Test execution has started. TC-01 and TC-02 are passed, while remaining functional and non-functional tests are pending.
 
 \end{document}

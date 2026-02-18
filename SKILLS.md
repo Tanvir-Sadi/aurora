@@ -7,7 +7,7 @@ This file defines practical project skills for Codex in this repository.
 - Keep document order and naming intact.
 - Ensure cross-document consistency:
   - Charter -> Plan -> PRD -> SRS -> SDS -> Testing -> RTM -> Release -> Operations -> PIR
-- When requirements change, propagate updates to affected docs.
+- When requirements or implementation behavior change, update impacted docs in the same task.
 
 ## Skill: aurora-ui-implementer
 - Use when implementing or refining the animated website.
@@ -19,21 +19,28 @@ This file defines practical project skills for Codex in this repository.
   - Preserve smooth transitions.
   - Prefer lightweight CSS/JS techniques.
 
-## Skill: accessibility-and-performance-checker
-- Use when validating readiness before release.
-- Accessibility checks:
-  - Keyboard activation and focus visibility.
-  - Reduced-motion fallback.
-  - Basic semantic structure.
-- Performance checks:
-  - Fast interaction response after click.
-  - No major frame drops during animation on common devices.
+## Skill: qa-evidence-updater
+- Use when test results are reported (pass/fail) and SDLC evidence must be synchronized.
+- Update at minimum:
+  - `latex/sdlc/07_test_cases.tex`
+  - `latex/sdlc/08_rtm.tex`
+  - `latex/sdlc/02_project_plan.tex` (WP-06 status if needed)
+- Keep requirement/test IDs aligned (`FR-*`, `NFR-*`, `TC-*`).
+
+## Skill: task-tracker-maintainer
+- Use when project activity changes and tracker should reflect current state.
+- Never edit `TASK_TRACKER.md` manually.
+- Run:
+  - `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/update-task-tracker.ps1`
+- Ensure pre-commit hook remains configured:
+  - `git config --get core.hooksPath` should return `.githooks`.
 
 ## Skill: release-readiness-updater
 - Use before milestone/release updates.
 - Confirm these documents are updated when applicable:
-  - `06_test_plan.tex`
-  - `07_test_cases.tex`
-  - `08_rtm.tex`
-  - `09_release_deployment_plan.tex`
+  - `latex/sdlc/06_test_plan.tex`
+  - `latex/sdlc/07_test_cases.tex`
+  - `latex/sdlc/08_rtm.tex`
+  - `latex/sdlc/09_release_deployment_plan.tex`
+  - `latex/sdlc/10_operations_maintenance_plan.tex`
 - Record unresolved risks and known limitations explicitly.
