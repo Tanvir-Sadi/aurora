@@ -41,13 +41,13 @@ TC-06 & FR-06 & Reduced-motion preference lowers or disables heavy motion effect
 \hline
 Test ID & Req ID & Expected Result & Status \\
 \hline
-TC-07 & NFR-01 & Activation response begins within 200 ms under baseline conditions. & Not executed \\
+TC-07 & NFR-01 & Activation response begins within 200 ms under baseline conditions. & Pass \\
 \hline
-TC-08 & NFR-02 & Accessibility baseline checks pass target threshold. & Not executed \\
+TC-08 & NFR-02 & Accessibility baseline checks pass target threshold. & Pass \\
 \hline
-TC-09 & NFR-03 & No heavy runtime animation library is present in v1 bundle. & Not executed \\
+TC-09 & NFR-03 & No heavy runtime animation library is present in v1 bundle. & Pass \\
 \hline
-TC-10 & NFR-04 & No uncaught errors appear in normal flow console trace. & Not executed \\
+TC-10 & NFR-04 & No uncaught errors appear in normal flow console trace. & Pass \\
 \hline
 \end{longtable}
 
@@ -61,11 +61,16 @@ TC-10 & NFR-04 & No uncaught errors appear in normal flow console trace. & Not e
   \item 2026-02-18: TC-04 retest passed and verified.
   \item 2026-02-18: TC-05 passed.
   \item 2026-02-18: TC-06 passed.
+  \item 2026-02-18: TC-07 passed.
+  \item 2026-02-18: TC-08 passed (Lighthouse accessibility baseline verified).
+  \item 2026-02-18: TC-09 passed (vanilla JS dependency constraint verified).
+  \item 2026-02-18: TC-10 passed (no uncaught runtime errors observed in normal flow).
 \end{itemize}
 
 \section{Regression Set}
 Run TC-01 to TC-10 after each significant animation or styling change.
 
 \end{document}
+
 
 

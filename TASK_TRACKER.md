@@ -5,16 +5,16 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 ## Snapshot
 
-- Generated: 2026-02-18 13:37:12 +09:00
+- Generated: 2026-02-18 13:46:34 +09:00
 - Branch: main
-- Last commit: 55141c1
+- Last commit: 3990741
 - Latest release tag: v1.0.0
 - Requirements locked count: FR=6, NFR=4
 
 ## Work Package Summary
 
-- Completed: 1
-- In Progress: 5
+- Completed: 2
+- In Progress: 4
 - Planned: 1
 - Next Focus: WP-02 - Build page structure and base styling
 
@@ -25,12 +25,12 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 | WP-03 | Implement night-sky transition behavior | Tanvir | In progress |
 | WP-04 | Implement aurora animation loop in vanilla JS | Tanvir | In progress |
 | WP-05 | Add responsive and reduced-motion behavior | Tanvir | In progress |
-| WP-06 | Execute testing and update RTM | Tanvir | In progress (TC-01 to TC-06 passed; NFR tests pending) |
+| WP-06 | Execute testing and update RTM | Tanvir | Completed (TC-01 to TC-10 passed) |
 | WP-07 | Deploy MVP and publish release notes | Tanvir | Planned |
 
 ## Git Working Tree
 
-- Staged changes: 8
+- Staged changes: 5
 - Unstaged changes: 0
 - Untracked files: 0
 
@@ -38,6 +38,7 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 | Commit | Date | Message |
 |---|---|---|
+| 3990741 | 2026-02-18 | test/docs: sync TC-03..TC-06 status and update agent skills workflow |
 | 55141c1 | 2026-02-18 | ドキュメントとタスクトラッカーの更新 |
 | f42c61c | 2026-02-18 | hook test |
 | fb2e669 | 2026-02-18 | docs: add project README with setup, SDLC, and UML workflow |
