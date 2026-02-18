@@ -9,9 +9,8 @@
 - Requirements locked: `FR-01..FR-06`, `NFR-01..NFR-04`.
 - Sprint 1 implementation started.
 - Current test evidence:
-  - `TC-01`: Pass
-  - `TC-02`: Pass
-  - Remaining test cases: Pending
+  - `TC-01` to `TC-06`: Pass
+  - `TC-07` to `TC-10`: Pending
 - First release tag published: `v1.0.0`.
 
 ## Source of Truth
@@ -71,6 +70,10 @@
 - Do not edit `TASK_TRACKER.md` manually.
 - After meaningful activity, refresh task tracker:
   - `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/update-task-tracker.ps1`
+- Commit workflow:
+  - After each significant adjustment, prepare a commit checkpoint.
+  - Show changed files and a proposed commit message.
+  - Wait for explicit user confirmation before running `git commit`.
 
 ## Definition of Done (MVP)
 - Night mode and aurora animation are implemented and trigger correctly.

@@ -26,13 +26,13 @@ TC-01 & FR-01 & Primary action button is visible and clearly labeled on initial 
 \hline
 TC-02 & FR-02 & Clicking the button transitions scene to night-sky mode. & Pass \\
 \hline
-TC-03 & FR-03 & Aurora animation starts after activation and remains visible. & Not executed \\
+TC-03 & FR-03 & Aurora animation starts after activation and remains visible. & Pass \\
 \hline
-TC-04 & FR-04 & Keyboard activation (Enter/Space) triggers the same transition. & Not executed \\
+TC-04 & FR-04 & Keyboard activation (Enter/Space) triggers the same transition. & Pass \\
 \hline
-TC-05 & FR-05 & Layout remains usable on mobile and desktop test sizes. & Not executed \\
+TC-05 & FR-05 & Layout remains usable on mobile and desktop test sizes. & Pass \\
 \hline
-TC-06 & FR-06 & Reduced-motion preference lowers or disables heavy motion effects. & Not executed \\
+TC-06 & FR-06 & Reduced-motion preference lowers or disables heavy motion effects. & Pass \\
 \hline
 \end{longtable}
 
@@ -55,9 +55,17 @@ TC-10 & NFR-04 & No uncaught errors appear in normal flow console trace. & Not e
 \begin{itemize}
   \item 2026-02-18: TC-01 passed.
   \item 2026-02-18: TC-02 passed.
+  \item 2026-02-18: TC-03 passed.
+  \item 2026-02-18: TC-04 failed (keyboard behavior inconsistent in initial implementation).
+  \item 2026-02-18: Keyboard activation fix implemented in \texttt{app.js}; retest required for TC-04.
+  \item 2026-02-18: TC-04 retest passed and verified.
+  \item 2026-02-18: TC-05 passed.
+  \item 2026-02-18: TC-06 passed.
 \end{itemize}
 
 \section{Regression Set}
 Run TC-01 to TC-10 after each significant animation or styling change.
 
 \end{document}
+
+

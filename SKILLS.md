@@ -22,6 +22,7 @@ This file defines practical project skills for Codex in this repository.
 ## Skill: qa-evidence-updater
 - Use when test results are reported (pass/fail) and SDLC evidence must be synchronized.
 - Update at minimum:
+  - `latex/sdlc/06_test_plan.tex`
   - `latex/sdlc/07_test_cases.tex`
   - `latex/sdlc/08_rtm.tex`
   - `latex/sdlc/02_project_plan.tex` (WP-06 status if needed)
@@ -34,6 +35,14 @@ This file defines practical project skills for Codex in this repository.
   - `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/update-task-tracker.ps1`
 - Ensure pre-commit hook remains configured:
   - `git config --get core.hooksPath` should return `.githooks`.
+
+## Skill: commit-checkpoint-manager
+- Use after any significant adjustment.
+- Create a checkpoint workflow:
+  - Summarize changed files and key diffs.
+  - Propose a concise commit message.
+  - Wait for explicit user confirmation before running `git commit`.
+- Keep commits small and logically grouped.
 
 ## Skill: release-readiness-updater
 - Use before milestone/release updates.
