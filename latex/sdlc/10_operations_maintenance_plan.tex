@@ -18,6 +18,14 @@
 \section{Operational Model}
 Aurora v1 is a static frontend application with lightweight operational needs.
 
+\section{Current Production Baseline}
+\begin{itemize}[leftmargin=*]
+  \item Current version: \texttt{v1.1.0}.
+  \item Release date: 2026-02-18.
+  \item Hosting model: static site from repository artifacts.
+  \item Known critical/high production defects at release: none.
+\end{itemize}
+
 \section{Monitoring and Alerting}
 \begin{itemize}[leftmargin=*]
   \item Uptime check on production URL.
@@ -36,6 +44,7 @@ Aurora v1 is a static frontend application with lightweight operational needs.
 \begin{itemize}[leftmargin=*]
   \item Keep previous deploy artifacts or release tags.
   \item Recovery path is redeploying last known stable static bundle.
+  \item Primary rollback tag for current release: \texttt{v1.0.0}.
 \end{itemize}
 
 \section{Patch and Upgrade Plan}

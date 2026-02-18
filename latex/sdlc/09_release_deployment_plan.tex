@@ -22,30 +22,38 @@ MVP release includes FR-01 to FR-06 and NFR-01 to NFR-04.
 \begin{itemize}[leftmargin=*]
   \item Deployment model: static hosting.
   \item Build output: static HTML/CSS/JS assets.
-  \item Candidate targets: GitHub Pages or Netlify.
+  \item Target repository: \texttt{https://github.com/Tanvir-Sadi/aurora}.
 \end{itemize}
 
-\section{Pre-Release Checklist}
+\section{Release Checklist Result}
 \begin{itemize}[leftmargin=*]
-  \item Test cases TC-01 to TC-10 executed and recorded.
-  \item No open critical or high defects.
-  \item Lighthouse performance and accessibility checks captured.
-  \item Reduced-motion behavior verified.
-  \item SDLC docs synchronized with final implementation.
+  \item Completed: Test cases TC-01 to TC-10 executed and recorded as pass.
+  \item Completed: No open critical or high defects.
+  \item Completed: Lighthouse performance and accessibility checks captured.
+  \item Completed: Reduced-motion behavior verified.
+  \item Completed: SDLC docs synchronized with implementation baseline.
+\end{itemize}
+
+\section{Published Release Record}
+\begin{itemize}[leftmargin=*]
+  \item Release date: 2026-02-18.
+  \item Published tag: \texttt{v1.1.0}.
+  \item Source branch: \texttt{main}.
+  \item Release commit: \texttt{5665d06}.
 \end{itemize}
 
 \section{Rollback Plan}
 \begin{itemize}[leftmargin=*]
   \item Keep previous deployment artifact available.
-  \item Revert DNS/hosting alias to prior stable version if needed.
+  \item Revert to prior stable release tag (\texttt{v1.0.0}) if needed.
   \item Publish rollback note with issue summary.
 \end{itemize}
 
-\section{Go-Live Validation}
+\section{Go-Live Validation Result}
 \begin{itemize}[leftmargin=*]
-  \item Open production URL on Chrome, Edge, Firefox.
-  \item Validate activation flow and animation visibility.
-  \item Validate keyboard and reduced-motion paths.
+  \item Production activation flow validated on Chrome, Edge, and Firefox.
+  \item Night-sky transition and aurora visibility verified.
+  \item Keyboard and reduced-motion paths verified.
 \end{itemize}
 
 \section{Release Ownership}
