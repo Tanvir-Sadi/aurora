@@ -1,0 +1,103 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{{./}{uml/}{latex/sdlc/uml/}}
+\usepackage[hidelinks]{hyperref}
+
+\title{Software Design Specification (SDS): Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Architecture Overview}
+\subsection{Design Style}
+Client-side modular design using vanilla JavaScript modules and CSS layers.
+
+\subsection{High-Level Components}
+\begin{longtable}{|p{0.24\linewidth}|p{0.66\linewidth}|}
+\hline
+Component & Responsibility \\
+\hline
+UI Layer (HTML/CSS) & Layout, button presentation, scene layers, responsive behavior \\
+\hline
+Interaction Controller (JS) & Event handling, state transitions (default -> night) \\
+\hline
+Animation Engine (JS) & requestAnimationFrame loop, aurora motion calculations \\
+\hline
+Accessibility Handler (JS/CSS) & Keyboard support and reduced-motion logic \\
+\hline
+\end{longtable}
+
+\section{Detailed Design}
+\subsection{State Model}
+\begin{itemize}[leftmargin=*]
+  \item State 1: \texttt{default}
+  \item State 2: \texttt{night-active}
+  \item Optional state flags: \texttt{reduced-motion}, \texttt{is-animating}
+\end{itemize}
+
+\subsection{Event Flow}
+\begin{enumerate}[leftmargin=*]
+  \item User triggers primary button.
+  \item Controller sets \texttt{night-active} class.
+  \item Animation engine initializes and starts frame loop.
+  \item If reduced-motion is active, engine runs reduced effect path.
+\end{enumerate}
+
+\subsection{File-Level Design (Proposed)}
+\begin{itemize}[leftmargin=*]
+  \item \texttt{index.html}: structural markup and control element.
+  \item \texttt{styles.css}: scene styling and transitions.
+  \item \texttt{app.js}: initialization and interaction control.
+  \item \texttt{aurora.js}: animation loop and rendering logic.
+\end{itemize}
+
+\section{Design Decisions}
+\begin{longtable}{|p{0.18\linewidth}|p{0.72\linewidth}|}
+\hline
+Decision & Rationale \\
+\hline
+Use vanilla JS in v1 & Keeps bundle small and code transparent for learning and SDLC traceability \\
+\hline
+Use CSS transitions for base mode switch & Efficient and simple for broad browser support \\
+\hline
+Use requestAnimationFrame & Browser-native animation timing and control \\
+\hline
+Include reduced-motion branch & Accessibility and performance fallback \\
+\hline
+\end{longtable}
+
+\section{UML Design Diagrams (PlantUML)}
+\subsection{Component Diagram}
+\begin{center}
+  \includegraphics[width=0.52\linewidth]{sds_component.png}\\
+  \small Figure: Aurora Component Diagram
+\end{center}
+\noindent PlantUML source: \texttt{uml/sds\_component.puml}
+
+\subsection{State Diagram}
+\begin{center}
+  \includegraphics[width=0.62\linewidth]{sds_state.png}\\
+  \small Figure: Aurora UI State Diagram
+\end{center}
+\noindent PlantUML source: \texttt{uml/sds\_state.puml}
+
+\subsection{Sequence Diagram (Activation Flow)}
+\begin{center}
+  \includegraphics[width=0.88\linewidth]{sds_sequence.png}\\
+  \small Figure: Aurora Activation Sequence
+\end{center}
+\noindent PlantUML source: \texttt{uml/sds\_sequence.puml}
+
+\section{Requirement Coverage}
+SDS supports FR-01 to FR-06 and NFR-01 to NFR-04 from SRS.
+
+\end{document}

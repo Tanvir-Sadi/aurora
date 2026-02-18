@@ -1,0 +1,97 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{{./}{uml/}{latex/sdlc/uml/}}
+\usepackage[hidelinks]{hyperref}
+
+\title{Software Requirements Specification (SRS): Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\subsection{Purpose}
+Define software requirements for the Aurora MVP implemented with vanilla HTML, CSS, and JavaScript.
+
+\subsection{Scope}
+The system is a frontend-only single-page application with an interactive visual animation trigger.
+
+\section{Overall Description}
+\subsection{Product Perspective}
+Aurora runs in-browser and does not require backend integration for v1.
+
+\subsection{Operating Environment}
+\begin{itemize}[leftmargin=*]
+  \item Desktop browsers: latest Chrome, Edge, Firefox.
+  \item Mobile browsers: modern Chromium-based and Safari-compatible engines.
+\end{itemize}
+
+\section{Specific Requirements}
+\subsection{Functional Requirements}
+\begin{longtable}{|p{0.14\linewidth}|p{0.72\linewidth}|}
+\hline
+ID & Statement \\
+\hline
+FR-01 & The system shall display a primary action button in the initial page state. \\
+\hline
+FR-02 & The system shall switch page background to night-sky mode when the button is activated. \\
+\hline
+FR-03 & The system shall start aurora animation after night mode activation. \\
+\hline
+FR-04 & The system shall allow keyboard activation for the primary action button. \\
+\hline
+FR-05 & The system shall keep content usable across target viewport sizes. \\
+\hline
+FR-06 & The system shall reduce animation intensity when reduced-motion is requested. \\
+\hline
+\end{longtable}
+
+\subsection{Non-Functional Requirements}
+\begin{longtable}{|p{0.14\linewidth}|p{0.72\linewidth}|}
+\hline
+ID & Statement \\
+\hline
+NFR-01 & The initial interaction shall begin within 200 ms under baseline conditions. \\
+\hline
+NFR-02 & The page shall have no critical accessibility violations in baseline checks. \\
+\hline
+NFR-03 & The system shall avoid dependencies on heavy animation libraries for v1. \\
+\hline
+NFR-04 & The page shall avoid uncaught runtime errors in production usage flow. \\
+\hline
+\end{longtable}
+
+\section{External Interface Requirements}
+\begin{itemize}[leftmargin=*]
+  \item UI: One primary activation control and visual scene layers.
+  \item Hardware: Standard keyboard, mouse, touch interface.
+  \item Software: Browser with JavaScript enabled.
+\end{itemize}
+
+\section{UML Artifacts (PlantUML)}
+\subsection{Use Case Diagram}
+\begin{center}
+  \includegraphics[width=0.88\linewidth]{srs_use_case.png}\\
+  \small Figure: Aurora Use Case Diagram
+\end{center}
+\noindent PlantUML source: \texttt{uml/srs\_use\_case.puml}
+
+\subsection{Activity Diagram (Primary User Flow)}
+\begin{center}
+  \includegraphics[width=0.72\linewidth]{srs_activity.png}\\
+  \small Figure: Aurora Primary Activity Flow
+\end{center}
+\noindent PlantUML source: \texttt{uml/srs\_activity.puml}
+
+\section{Traceability Note}
+Requirement IDs in this document are used by SDS, test cases, and RTM.
+
+\end{document}

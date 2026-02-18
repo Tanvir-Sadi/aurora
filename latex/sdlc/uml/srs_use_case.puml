@@ -1,0 +1,22 @@
+﻿@startuml
+left to right direction
+actor Visitor
+
+rectangle "Aurora Website" {
+  usecase "Load Website" as UC1
+  usecase "Activate Night Mode" as UC2
+  usecase "View Aurora Animation" as UC3
+  usecase "Activate via Keyboard" as UC4
+  usecase "Use Reduced Motion Experience" as UC5
+}
+
+Visitor --> UC1
+Visitor --> UC2
+Visitor --> UC3
+Visitor --> UC4
+Visitor --> UC5
+
+UC2 ..> UC3 : <<includes>>
+UC4 ..> UC2 : <<extends>>
+UC5 ..> UC3 : <<extends>>
+@enduml

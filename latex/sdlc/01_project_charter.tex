@@ -1,0 +1,123 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{Project Charter: Aurora Interactive Website}
+\author{Prepared by Tanvir Sadi}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Project Overview}
+\subsection{Project Basics}
+\begin{itemize}[leftmargin=*]
+  \item Project Name: Aurora Interactive Website
+  \item Charter Version: 1.1
+  \item Project Owner: Tanvir Sadi
+  \item Current Phase: Planning and design baseline
+  \item Target MVP Release: 2026-03-20
+\end{itemize}
+
+\subsection{Background}
+This project delivers a single-page animated web experience. A user clicks one button to transition the page into a night sky and start a northern-lights animation.
+
+\subsection{Problem Statement}
+Most static pages provide limited user engagement. The project requires a lightweight, accessible, and performant animation experience that can be delivered as a frontend-only MVP.
+
+\subsection{Vision Statement}
+Deliver a fast and accessible one-click aurora website that feels immersive on desktop and mobile.
+
+\section{Current Status and Decision Log}
+\begin{itemize}[leftmargin=*]
+  \item SDLC document structure is created in \texttt{latex/sdlc}.
+  \item Project direction is confirmed as frontend-only MVP.
+  \item Technology decision for v1 is finalized: \textbf{Vanilla HTML, CSS, and JavaScript}.
+  \item No animation library is required for v1 unless performance or quality targets fail.
+\end{itemize}
+
+\section{Objectives and Success Criteria}
+\subsection{Objectives}
+\begin{enumerate}[leftmargin=*]
+  \item Implement one-click activation for night mode and aurora animation.
+  \item Deliver responsive UI for desktop and mobile.
+  \item Meet accessibility and performance baseline targets.
+  \item Keep SDLC documents synchronized with implementation.
+\end{enumerate}
+
+\subsection{Success Metrics}
+\begin{longtable}{|p{0.30\linewidth}|p{0.20\linewidth}|p{0.40\linewidth}|}
+\hline
+Metric & Target & Measurement \\
+\hline
+Performance score & Lighthouse >= 85 & Lighthouse run on production build \\
+\hline
+Accessibility score & Lighthouse >= 90 & Keyboard checks plus Lighthouse \\
+\hline
+Interaction latency & <= 200 ms & DevTools timing from click to transition start \\
+\hline
+Animation smoothness & 55+ FPS desktop, 30+ FPS mobile & Browser performance profile \\
+\hline
+\end{longtable}
+
+\section{Scope}
+\subsection{In Scope}
+\begin{itemize}[leftmargin=*]
+  \item Single-page layout with one primary action button.
+  \item Night-sky background transition.
+  \item Northern-lights animation in the active mode.
+  \item Reduced-motion fallback behavior.
+  \item Responsive behavior for common mobile and desktop sizes.
+\end{itemize}
+
+\subsection{Out of Scope}
+\begin{itemize}[leftmargin=*]
+  \item Backend APIs and user accounts.
+  \item CMS features.
+  \item Native mobile apps.
+  \item Real-time geolocation or weather-driven aurora model.
+\end{itemize}
+
+\section{Constraints and Assumptions}
+\begin{itemize}[leftmargin=*]
+  \item Budget is minimal and project is individually owned.
+  \item Target browsers: latest Chrome, Edge, Firefox.
+  \item Deployment will be static hosting.
+  \item Modern browser features are available.
+\end{itemize}
+
+\section{Milestones}
+\begin{longtable}{|p{0.34\linewidth}|p{0.18\linewidth}|p{0.38\linewidth}|}
+\hline
+Milestone & Date & Exit Criteria \\
+\hline
+Requirements and design baseline complete & 2026-02-24 & PRD, SRS, SDS first pass approved \\
+\hline
+Core implementation complete & 2026-03-07 & Night mode and aurora behavior implemented \\
+\hline
+Test and quality gate complete & 2026-03-14 & Test plan/cases executed and RTM updated \\
+\hline
+MVP release complete & 2026-03-20 & Deployment and release checklist passed \\
+\hline
+\end{longtable}
+
+\section{Initial Risks}
+\begin{itemize}[leftmargin=*]
+  \item Performance drop on low-end devices.
+  \item Browser rendering differences.
+  \item Timeline slip due to animation tuning.
+\end{itemize}
+
+\section{Approval}
+\begin{itemize}[leftmargin=*]
+  \item Product Owner: Tanvir Sadi (Approved on 2026-02-18)
+  \item Reviewer: TBD
+\end{itemize}
+
+\end{document}

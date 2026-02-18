@@ -1,0 +1,9 @@
+﻿@startuml
+package "Aurora Web App" {
+  [index.html] --> [app.js]
+  [index.html] --> [styles.css]
+  [app.js] --> [aurora.js]
+  [app.js] --> [DOM State]
+  [aurora.js] --> [Canvas/CSS Layer]
+}
+@enduml

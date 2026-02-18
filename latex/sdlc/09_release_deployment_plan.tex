@@ -1,0 +1,54 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{Release and Deployment Plan: Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Release Scope}
+MVP release includes FR-01 to FR-06 and NFR-01 to NFR-04.
+
+\section{Deployment Strategy}
+\begin{itemize}[leftmargin=*]
+  \item Deployment model: static hosting.
+  \item Build output: static HTML/CSS/JS assets.
+  \item Candidate targets: GitHub Pages or Netlify.
+\end{itemize}
+
+\section{Pre-Release Checklist}
+\begin{itemize}[leftmargin=*]
+  \item Test cases TC-01 to TC-10 executed and recorded.
+  \item No open critical or high defects.
+  \item Lighthouse performance and accessibility checks captured.
+  \item Reduced-motion behavior verified.
+  \item SDLC docs synchronized with final implementation.
+\end{itemize}
+
+\section{Rollback Plan}
+\begin{itemize}[leftmargin=*]
+  \item Keep previous deployment artifact available.
+  \item Revert DNS/hosting alias to prior stable version if needed.
+  \item Publish rollback note with issue summary.
+\end{itemize}
+
+\section{Go-Live Validation}
+\begin{itemize}[leftmargin=*]
+  \item Open production URL on Chrome, Edge, Firefox.
+  \item Validate activation flow and animation visibility.
+  \item Validate keyboard and reduced-motion paths.
+\end{itemize}
+
+\section{Release Ownership}
+Release manager for MVP: Tanvir Sadi.
+
+\end{document}

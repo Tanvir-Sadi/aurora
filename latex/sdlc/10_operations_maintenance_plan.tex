@@ -1,0 +1,54 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{Operations and Maintenance Plan: Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Operational Model}
+Aurora v1 is a static frontend application with lightweight operational needs.
+
+\section{Monitoring and Alerting}
+\begin{itemize}[leftmargin=*]
+  \item Uptime check on production URL.
+  \item Basic client-side error review from browser/session logs when available.
+  \item Periodic Lighthouse checks after major changes.
+\end{itemize}
+
+\section{Incident and Problem Management}
+\begin{itemize}[leftmargin=*]
+  \item Classify incidents by severity: Critical, High, Medium, Low.
+  \item Critical issues (site unavailable or broken core interaction) require immediate rollback or hotfix.
+  \item Record root cause and preventive action in follow-up notes.
+\end{itemize}
+
+\section{Backup and Recovery}
+\begin{itemize}[leftmargin=*]
+  \item Keep previous deploy artifacts or release tags.
+  \item Recovery path is redeploying last known stable static bundle.
+\end{itemize}
+
+\section{Patch and Upgrade Plan}
+\begin{itemize}[leftmargin=*]
+  \item Weekly review window for improvements and fixes.
+  \item Re-run regression set for every visible animation or interaction change.
+  \item Revisit decision to stay on vanilla JS only if constraints are no longer met.
+\end{itemize}
+
+\section{Support SLA (Project-Level)}
+\begin{itemize}[leftmargin=*]
+  \item Critical issue response target: within 24 hours.
+  \item High issue response target: within 48 hours.
+\end{itemize}
+
+\end{document}

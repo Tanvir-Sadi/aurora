@@ -1,0 +1,89 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{Project Plan: Aurora Interactive Website}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Plan Baseline}
+\begin{itemize}[leftmargin=*]
+  \item Lifecycle Model: Iterative mini-milestones (weekly checkpoints).
+  \item Delivery Strategy: MVP first, then polish in controlled increments.
+  \item Technology Baseline: Vanilla HTML/CSS/JS for v1.
+\end{itemize}
+
+\section{Work Breakdown Structure}
+\begin{longtable}{|p{0.10\linewidth}|p{0.52\linewidth}|p{0.14\linewidth}|p{0.14\linewidth}|}
+\hline
+ID & Work Package & Owner & Status \\
+\hline
+WP-01 & Finalize requirements and UX intent & Tanvir & Completed (FR/NFR locked) \\
+\hline
+WP-02 & Build page structure and base styling & Tanvir & In progress \\
+\hline
+WP-03 & Implement night-sky transition behavior & Tanvir & In progress \\
+\hline
+WP-04 & Implement aurora animation loop in vanilla JS & Tanvir & In progress \\
+\hline
+WP-05 & Add responsive and reduced-motion behavior & Tanvir & In progress \\
+\hline
+WP-06 & Execute testing and update RTM & Tanvir & Planned \\
+\hline
+WP-07 & Deploy MVP and publish release notes & Tanvir & Planned \\
+\hline
+\end{longtable}
+
+\section{Schedule}
+\begin{longtable}{|p{0.32\linewidth}|p{0.20\linewidth}|p{0.36\linewidth}|}
+\hline
+Activity Window & Date Range & Output \\
+\hline
+Planning and specification & 2026-02-18 to 2026-02-24 & Updated charter, plan, PRD, SRS, SDS \\
+\hline
+Implementation sprint 1 & 2026-02-25 to 2026-03-02 & Button trigger and night-mode transition \\
+\hline
+Implementation sprint 2 & 2026-03-03 to 2026-03-07 & Aurora animation and interaction polish \\
+\hline
+QA and hardening & 2026-03-08 to 2026-03-14 & Test evidence, accessibility and performance checks \\
+\hline
+Release preparation and go-live & 2026-03-15 to 2026-03-20 & Deployment and release checklist complete \\
+\hline
+\end{longtable}
+
+\section{Resource Plan}
+\begin{itemize}[leftmargin=*]
+  \item Primary resource: Tanvir Sadi (development, QA, documentation).
+  \item Optional reviewer support for UX and acceptance sign-off.
+\end{itemize}
+
+\section{Risk and Mitigation Plan}
+\begin{longtable}{|p{0.10\linewidth}|p{0.34\linewidth}|p{0.44\linewidth}|}
+\hline
+Risk ID & Risk & Mitigation \\
+\hline
+R-01 & Animation performance below target & Use simpler layers, lower particle/detail count, reduced-motion mode \\
+\hline
+R-02 & Visual mismatch across browsers & Maintain browser matrix and fallback CSS behavior \\
+\hline
+R-03 & Scope expansion & Enforce MVP scope freeze after 2026-02-24 baseline \\
+\hline
+\end{longtable}
+
+\section{Communication Plan}
+\begin{itemize}[leftmargin=*]
+  \item Weekly internal status update.
+  \item Milestone completion summary in SDLC documents.
+  \item Release note for go-live milestone.
+\end{itemize}
+
+\end{document}

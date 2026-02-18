@@ -1,0 +1,57 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+\title{Test Cases: Aurora}
+\author{QA Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Test Case Template}
+Fields: ID, Requirement ID, Preconditions, Steps, Expected Result, Status.
+
+\section{Functional Test Cases}
+\begin{longtable}{|p{0.12\linewidth}|p{0.12\linewidth}|p{0.68\linewidth}|}
+\hline
+Test ID & Req ID & Expected Result \\
+\hline
+TC-01 & FR-01 & Primary action button is visible and clearly labeled on initial load. \\
+\hline
+TC-02 & FR-02 & Clicking the button transitions scene to night-sky mode. \\
+\hline
+TC-03 & FR-03 & Aurora animation starts after activation and remains visible. \\
+\hline
+TC-04 & FR-04 & Keyboard activation (Enter/Space) triggers the same transition. \\
+\hline
+TC-05 & FR-05 & Layout remains usable on mobile and desktop test sizes. \\
+\hline
+TC-06 & FR-06 & Reduced-motion preference lowers or disables heavy motion effects. \\
+\hline
+\end{longtable}
+
+\section{Non-Functional Test Cases}
+\begin{longtable}{|p{0.12\linewidth}|p{0.12\linewidth}|p{0.68\linewidth}|}
+\hline
+Test ID & Req ID & Expected Result \\
+\hline
+TC-07 & NFR-01 & Activation response begins within 200 ms under baseline conditions. \\
+\hline
+TC-08 & NFR-02 & Accessibility baseline checks pass target threshold. \\
+\hline
+TC-09 & NFR-03 & No heavy runtime animation library is present in v1 bundle. \\
+\hline
+TC-10 & NFR-04 & No uncaught errors appear in normal flow console trace. \\
+\hline
+\end{longtable}
+
+\section{Regression Set}
+Run TC-01 to TC-10 after each significant animation or styling change.
+
+\end{document}

@@ -1,0 +1,53 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+\title{Requirements Traceability Matrix (RTM): Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Traceability Rules}
+\begin{itemize}
+  \item Every PRD/SRS requirement ID must map to design and at least one test case.
+  \item Requirement changes require synchronized SDS and test case updates.
+\end{itemize}
+
+\section{Requirement Traceability Matrix}
+\begin{longtable}{|p{0.14\linewidth}|p{0.28\linewidth}|p{0.26\linewidth}|p{0.22\linewidth}|}
+\hline
+Requirement ID & Requirement Summary & SDS Coverage & Test Coverage \\
+\hline
+FR-01 & Visible primary action button & UI layer and interaction controller & TC-01 \\
+\hline
+FR-02 & Transition to night mode & Interaction controller and CSS transitions & TC-02 \\
+\hline
+FR-03 & Start aurora animation & Animation engine module & TC-03 \\
+\hline
+FR-04 & Keyboard activation support & Interaction controller and accessibility handler & TC-04 \\
+\hline
+FR-05 & Responsive layout & UI layer responsive rules & TC-05 \\
+\hline
+FR-06 & Reduced-motion behavior & Accessibility handler and animation branch & TC-06 \\
+\hline
+NFR-01 & Interaction <= 200 ms & Event flow and performance tuning & TC-07 \\
+\hline
+NFR-02 & Accessibility baseline threshold & Semantic HTML and keyboard/focus rules & TC-08 \\
+\hline
+NFR-03 & Vanilla JS constraint & Architecture and dependency policy & TC-09 \\
+\hline
+NFR-04 & No uncaught runtime errors & Error-safe execution path & TC-10 \\
+\hline
+\end{longtable}
+
+\section{Current Gaps}
+No functional gaps identified at documentation stage. Implementation and test execution pending.
+
+\end{document}

@@ -1,0 +1,91 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{Product Requirements Document (PRD): Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Product Summary}
+Aurora is a single-page interactive website. A user activates a button to transform the page into a night sky and run a northern-lights animation.
+
+\section{Product Goals}
+\begin{itemize}[leftmargin=*]
+  \item Create a memorable visual interaction in one click.
+  \item Keep the experience smooth and responsive.
+  \item Maintain accessibility as a first-class requirement.
+\end{itemize}
+
+\section{Target Users}
+\begin{itemize}[leftmargin=*]
+  \item Portfolio viewers and demo audiences.
+  \item Users browsing from desktop or mobile devices.
+\end{itemize}
+
+\section{User Stories}
+\begin{itemize}[leftmargin=*]
+  \item As a visitor, I want a clear call-to-action button so I can start the experience immediately.
+  \item As a visitor, I want a smooth transition to night mode so the interaction feels polished.
+  \item As a visitor, I want aurora animation that does not lag on my device.
+  \item As a keyboard user, I want to trigger the same behavior without a mouse.
+  \item As a motion-sensitive user, I want reduced animation when my system preference requests it.
+\end{itemize}
+
+\section{Functional Requirements}
+\begin{longtable}{|p{0.14\linewidth}|p{0.74\linewidth}|}
+\hline
+ID & Requirement \\
+\hline
+FR-01 & Provide a visible and labeled primary button to start night mode. \\
+\hline
+FR-02 & On activation, transition background from default state to night sky. \\
+\hline
+FR-03 & Start and display northern-lights animation after transition starts. \\
+\hline
+FR-04 & Support both pointer click and keyboard activation. \\
+\hline
+FR-05 & Maintain responsive layout for mobile and desktop viewports. \\
+\hline
+FR-06 & Respect \texttt{prefers-reduced-motion} by reducing or disabling heavy animation. \\
+\hline
+\end{longtable}
+
+\section{Non-Functional Requirements}
+\begin{longtable}{|p{0.14\linewidth}|p{0.74\linewidth}|}
+\hline
+ID & Requirement \\
+\hline
+NFR-01 & Trigger response time should be <= 200 ms on baseline test hardware. \\
+\hline
+NFR-02 & Achieve Lighthouse accessibility score >= 90 for the MVP page. \\
+\hline
+NFR-03 & No critical console errors during normal interaction flow. \\
+\hline
+NFR-04 & Use vanilla HTML/CSS/JS for v1; avoid large runtime libraries. \\
+\hline
+\end{longtable}
+
+\section{Prioritization}
+\subsection{MVP (Must Have)}
+FR-01 to FR-06 and NFR-01 to NFR-04.
+
+\subsection{Post-MVP (Could Have)}
+\begin{itemize}[leftmargin=*]
+  \item Additional theme presets.
+  \item Audio effects with user opt-in.
+  \item Advanced shader effects if needed.
+\end{itemize}
+
+\section{Acceptance Criteria}
+MVP is accepted when all must-have requirements are implemented and test evidence is recorded in the test artifacts.
+
+\end{document}

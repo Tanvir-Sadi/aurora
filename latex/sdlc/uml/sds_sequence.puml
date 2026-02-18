@@ -1,0 +1,15 @@
+﻿@startuml
+actor Visitor
+participant "UI Button" as Button
+participant "app.js" as App
+participant "aurora.js" as Aurora
+participant "DOM/CSS Scene" as Scene
+
+Visitor -> Button : click / keypress
+Button -> App : onActivate()
+App -> Scene : add class night-active
+App -> Aurora : startAnimation(reducedMotionFlag)
+loop each frame
+  Aurora -> Scene : render/update aurora layer
+end
+@enduml

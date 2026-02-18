@@ -1,0 +1,8 @@
+﻿@startuml
+[*] --> Default
+Default --> NightActive : click/keyboard activate
+NightActive --> NightActive : animation frame update
+NightActive --> NightActiveReduced : prefers-reduced-motion
+NightActiveReduced --> NightActive : reduced-motion off
+NightActiveReduced --> NightActiveReduced : reduced animation update
+@enduml

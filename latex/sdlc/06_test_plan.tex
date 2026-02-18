@@ -1,0 +1,80 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{Test Plan: Aurora}
+\author{QA Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Test Strategy}
+\begin{itemize}[leftmargin=*]
+  \item Validate requirements from SRS (FR and NFR IDs).
+  \item Combine manual exploratory testing with checklist-based validation.
+  \item Prioritize interaction, accessibility, and performance paths.
+\end{itemize}
+
+\section{Scope of Testing}
+\subsection{In Scope}
+\begin{itemize}[leftmargin=*]
+  \item Button activation by pointer and keyboard.
+  \item Night transition correctness.
+  \item Aurora animation behavior and reduced-motion behavior.
+  \item Responsive layout at representative viewport sizes.
+\end{itemize}
+
+\subsection{Out of Scope}
+\begin{itemize}[leftmargin=*]
+  \item Backend or API testing (none in v1).
+  \item Legacy browser compatibility testing outside target matrix.
+\end{itemize}
+
+\section{Test Environment}
+\begin{itemize}[leftmargin=*]
+  \item OS: Windows baseline workstation.
+  \item Browsers: latest Chrome, Edge, Firefox.
+  \item Tools: Browser DevTools, Lighthouse, manual keyboard test.
+\end{itemize}
+
+\section{Entry and Exit Criteria}
+\subsection{Entry}
+\begin{itemize}[leftmargin=*]
+  \item FR-01 to FR-06 implementation complete.
+  \item Build deployable in local browser.
+\end{itemize}
+
+\subsection{Exit}
+\begin{itemize}[leftmargin=*]
+  \item All critical and high defects resolved or explicitly deferred.
+  \item All must-have test cases pass.
+  \item RTM updated with execution status.
+\end{itemize}
+
+\section{Defect Management}
+\begin{itemize}[leftmargin=*]
+  \item Severity levels: Critical, High, Medium, Low.
+  \item Critical/High must be resolved before MVP release.
+\end{itemize}
+
+\section{Test Schedule}
+\begin{longtable}{|p{0.36\linewidth}|p{0.20\linewidth}|p{0.34\linewidth}|}
+\hline
+Phase & Window & Output \\
+\hline
+Test design & 2026-03-05 to 2026-03-08 & Finalized test cases \\
+\hline
+Execution cycle 1 & 2026-03-09 to 2026-03-11 & Defect list and fixes \\
+\hline
+Execution cycle 2 and regression & 2026-03-12 to 2026-03-14 & Final pass report \\
+\hline
+\end{longtable}
+
+\end{document}

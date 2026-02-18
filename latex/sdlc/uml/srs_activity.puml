@@ -1,0 +1,17 @@
+﻿@startuml
+start
+:Open website;
+:View default scene;
+if (User activates button?) then (yes)
+  :Switch to night mode;
+  if (prefers-reduced-motion?) then (yes)
+    :Run reduced aurora animation;
+  else (no)
+    :Run full aurora animation;
+  endif
+  :Display active night experience;
+else (no)
+  :Remain in default scene;
+endif
+stop
+@enduml
