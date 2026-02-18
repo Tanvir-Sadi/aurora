@@ -1,8 +1,7 @@
-﻿#!/usr/bin/env sh
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/update-task-tracker.ps1
-if [ $? -ne 0 ]; then
-  echo "Failed to update TASK_TRACKER.md"
-  exit 1
-fi
+#!/usr/bin/env sh
+set -e
 
-git add TASK_TRACKER.md
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$REPO_ROOT/scripts/update-task-tracker.ps1" -RepoRoot "$REPO_ROOT"
+
+git add "$REPO_ROOT/TASK_TRACKER.md"
