@@ -5,9 +5,9 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 ## Snapshot
 
-- Generated: 2026-02-18 14:35:44 +09:00
+- Generated: 2026-02-18 14:42:50 +09:00
 - Branch: main
-- Last commit: 564fa11
+- Last commit: 79aec4c
 - Latest release tag: v1.1.0
 - Requirements locked count: FR=6, NFR=4
 
@@ -30,7 +30,7 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 ## Git Working Tree
 
-- Staged changes: 6
+- Staged changes: 3
 - Unstaged changes: 0
 - Untracked files: 0
 
@@ -38,6 +38,7 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 | Commit | Date | Message |
 |---|---|---|
+| 79aec4c | 2026-02-18 | docs: add A-01/A-02 artifacts and fix PIR action-items table layout |
 | 564fa11 | 2026-02-18 | docs: finalize post-release SDLC updates and refresh tracker for v1.1.0 |
 | 5665d06 | 2026-02-18 | docs: close WP-02..WP-05 and update tracker focus to WP-07 |
 | a65e0b2 | 2026-02-18 | test/docs: mark TC-07..TC-10 passed and complete WP-06 |
@@ -45,7 +46,6 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 | 55141c1 | 2026-02-18 | ドキュメントとタスクトラッカーの更新 |
 | f42c61c | 2026-02-18 | hook test |
 | fb2e669 | 2026-02-18 | docs: add project README with setup, SDLC, and UML workflow |
-| 35e0148 | 2026-02-18 | .gitignore に Node.js と環境ファイルの追加 |
 
 ## Release Tags
 
