@@ -1,0 +1,86 @@
+﻿% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+\title{実装後レビュー (PIR): Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{レビュー状況}
+\begin{itemize}[leftmargin=*]
+  \item リリース状態: リリース済み。
+  \item リリースバージョン: \texttt{v1.1.0}。
+  \item リリース日: 2026-02-18。
+\end{itemize}
+
+\section{レビュー入力資料}
+\begin{itemize}[leftmargin=*]
+  \item RTM 証跡により、ベースライン リリースにおける FR-01 から FR-06 および NFR-01 から NFR-04 の合格を確認。
+  \item \texttt{07\_test\_cases.tex} における TC-01 から TC-10 の実行ログ。
+  \item QA で取得した Lighthouse 証跡および reduced-motion 検証結果。
+\end{itemize}
+
+\section{目標と結果}
+\begin{itemize}[leftmargin=*]
+  \item 目標: Vanilla JS により、夜空モード切り替えとオーロラ演出のインタラクティブ体験を提供する。
+  \item 結果: MVP リリース \texttt{v1.1.0} で達成。
+  \item 目標: ベースライン SDLC 文書とトレーサビリティを整備する。
+  \item 結果: 計画、SRS、SDS、テスト、RTM、リリース文書の同期により達成。
+\end{itemize}
+
+\section{うまくいったこと}
+\begin{itemize}[leftmargin=*]
+  \item 要件トレーサビリティは、SRS から RTM まで一貫性を維持できた。
+  \item アクセシビリティ要件と reduced-motion 挙動を実装し、リリース前に検証できた。
+  \item 欠陥 D-01 (キーボード有効化の不整合) を本番公開前にクローズできた。
+\end{itemize}
+
+\section{課題}
+\begin{itemize}[leftmargin=*]
+  \item キーボード有効化の挙動に対して、テスト期間中に修正サイクルが必要だった。
+  \item リリース準備状況の追跡で、文書間の手動同期作業が複数発生した。
+\end{itemize}
+
+\section{学んだ教訓}
+\begin{itemize}[leftmargin=*]
+  \item 実装スプリント早期に、キーボード操作と reduced-motion の確認を実施する。
+  \item テスト証跡の更新はコード変更と同時にまとめて行い、ドリフトを抑制する。
+  \item タグ公開直後に、リリースチェックリストの結果を確実に記録する。
+\end{itemize}
+
+\section{アクションアイテム}
+\small
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.08\linewidth}|>{\raggedright\arraybackslash}p{0.26\linewidth}|>{\raggedright\arraybackslash}p{0.11\linewidth}|>{\raggedright\arraybackslash}p{0.11\linewidth}|>{\raggedright\arraybackslash}p{0.14\linewidth}|>{\raggedright\arraybackslash}p{0.22\linewidth}|}
+\hline
+ID & アクションアイテム & 所有者 & 期日 & 状態 & 証拠 \\
+\hline
+A-01 & 次回リリース サイクル向けに、軽量なスクリプト式リリースノート テンプレートを追加する & Tanvir & 2026-03-10 & 完了 (2026-02-18) & \url{RELEASE_NOTES_TEMPLATE.md}; \url{scripts/new-release-notes.ps1} \\
+\hline
+A-02 & リアルな Aurora 目標、UX 改善範囲、性能ガードレールを含む v1.2 バックログを定義する & Tanvir & 2026-03-10 & 完了 (2026-02-18) & \url{latex/sdlc/12_v1_2_backlog.tex} \\
+\hline
+\end{longtable}
+\normalsize
+
+\section{フォローアップ状況 (v1.2 プログラム)}
+\begin{itemize}[leftmargin=*]
+  \item B-01 から B-03 を実装済み (video-first のリアリズム実行系 + fallback)。
+  \item B-05 を実装済み (視差、カーソルグロー、ボタン フィードバック)。
+  \item TC-11 から TC-17 の検証は WP-09 として保留中。
+  \item 次回 PIR 更新は、\texttt{v1.2.0} のリリース判断後に発行する。
+\end{itemize}
+
+\end{document}

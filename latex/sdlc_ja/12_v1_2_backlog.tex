@@ -1,0 +1,101 @@
+﻿% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{v1.2 バックログおよび目標定義: Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{目的}
+本書は、v1.2 の優先バックログと、PIR アクションアイテム A-02 に整合する測定可能な品質目標を定義する。
+
+\section{ベースラインとスコープ}
+\begin{itemize}[leftmargin=*]
+  \item ベースライン リリース: \texttt{v1.1.0}。
+  \item スコープ種別: オーロラ表現のリアリズム向上、インタラクション品質改善、リリースプロセス改善。
+  \item 制約: 実装を軽量に維持し、アクセシビリティのベースラインを維持する。
+\end{itemize}
+
+\section{測定可能目標 (v1.2)}
+\begin{longtable}{|p{0.14\linewidth}|p{0.30\linewidth}|p{0.22\linewidth}|p{0.24\linewidth}|}
+\hline
+Target ID & 指標 & 現行ベースライン & v1.2 目標 \\
+\hline
+RL-01 & オーロラのリアリティ忠実度 & 基本的なレイヤー波形表現 & 垂直変化と深度ヘイズを備えた多層カーテン表現 \\
+\hline
+RL-02 & 色表現のリアリティ & 固定パレットのブレンド & 動的グラデーション遷移 (緑/シアン主体、控えめなマゼンタ差し色) \\
+\hline
+RL-03 & 動きの自然さ & 反復的な波運動 & ノイズ駆動の位相変動による反復感の低減 \\
+\hline
+UX-02 & インタラクション品質 & 静的なシーン反応 & 可用性を損なわない軽微な視差とボタン マイクロフィードバック \\
+\hline
+PT-01 & Lighthouse Performance スコア & 94 & リアリズム更新有効時でも >= 93 \\
+\hline
+PT-02 & 起動応答 (NFR-01 経路) & <= 200 ms (合格) & ベースライン検証機で中央値 <= 200 ms \\
+\hline
+UX-01 & アクセシビリティ安定性 & ベースライン合格 & Lighthouse Accessibility >= 100 とキーボード同等性を維持 \\
+\hline
+OPS-01 & リリース文書作成速度 & テンプレート手動編集 & スクリプト生成を 2 分以内で完了 \\
+\hline
+\end{longtable}
+
+\section{優先バックログ}
+\begin{longtable}{|p{0.10\linewidth}|p{0.36\linewidth}|p{0.10\linewidth}|p{0.11\linewidth}|p{0.17\linewidth}|p{0.11\linewidth}|}
+\hline
+ID & バックログ項目 & 優先度 & 種別 & 受け入れ基準 & 状態 \\
+\hline
+B-01 & リアルな形状ダイナミクスのため、多層ノイズ変調オーロラカーテンを実装する。 & 高 & Visual Realism & 反復感の少ない輪郭挙動を持つ独立した可動レイヤーを 4 層以上実装。 & 実装済み (QA 待ち) \\
+\hline
+B-02 & 垂直方向のライトベール変化と大気ヘイズを追加し、奥行き知覚を向上させる。 & 高 & Visual Realism & アクティブモードで明確な深度分離と上層のソフトなヘイズが視認可能。 & 実装済み (QA 待ち) \\
+\hline
+B-03 & 色ブレンドモデルを改善し、現実的な遷移とグロー減衰を実現する。 & 高 & Visual Realism & バンディングや強いクリッピングなしで滑らかな色遷移を実現。 & 実装済み (QA 待ち) \\
+\hline
+B-04 & アニメーション強度を調整できる任意のチューニング UI を導入する。 & 中 & UX & reduced-motion 挙動を壊さずに強度調整が可能。 & 計画中 \\
+\hline
+B-05 & focus-visible スタイルとキーボード フィードバックの一貫性を改善する。 & 中 & Accessibility & キーボード操作のみでも完全に利用可能で、反応が明確。 & 実装済み (QA 待ち) \\
+\hline
+B-06 & リリースプロセスにスクリプト化されたリリースノート生成を追加する。 & 中 & Operations & \texttt{new-release-notes.ps1} で実用的なノートファイルを正常生成。 & 完了 \\
+\hline
+B-07 & リリースパッケージにポストリリース スモークチェックリストを追加する。 & 低 & Operations & リリースごとにスモークチェックを実行し証跡を記録。 & 計画中 \\
+\hline
+\end{longtable}
+
+\section{実装状況スナップショット (2026-02-18)}
+\begin{itemize}[leftmargin=*]
+  \item B-01/B-02/B-03 は、\texttt{index.html}、\texttt{app.js}、\texttt{aurora.js} において video-first 実行系 + canvas fallback として提供済み。
+  \item \texttt{app.js}/\texttt{styles.css} において、視差、カーソルグロー、ボタン マイクロフィードバックを提供済み。
+  \item リアル系ループ資産を \texttt{assets/aurora-loop.webm} と \texttt{assets/aurora-loop.mp4} として生成・格納済み。
+  \item 資産生成ワークフローを \texttt{scripts/generate-aurora-video.py} に記録済み。
+  \item 実装済み項目の残作業: RL-01 から RL-03、UX-02、PT/UX ガードレールに対する客観検証。
+  \item 検証後の次の実装焦点: B-04、B-07。
+\end{itemize}
+
+\section{実行計画}
+\begin{itemize}[leftmargin=*]
+  \item スプリント期間: 2026-02-19 から 2026-03-10。
+  \item マイルストーン 1: リアリズム実装 (B-01、B-02、B-03) - 提供済み。
+  \item マイルストーン 2: インタラクション/アクセシビリティ改善 (B-05) - 提供済み、QA 待ち。
+  \item マイルストーン 3: 検証およびチューニング (TC-11 から TC-17)。
+  \item マイルストーン 4: 残タスク (B-04、B-07)。
+\end{itemize}
+
+\section{v1.2 検証計画}
+\begin{itemize}[leftmargin=*]
+  \item TC-01 から TC-10 を再実行し、TC-11 から TC-17 を実施してリアリズム/インタラクション挙動を検証する。
+  \item Performance と Accessibility のガードレールに対する Lighthouse 証跡を取得する。
+  \item 最終の合否証跡で RTM とリリースノートを更新する。
+\end{itemize}
+
+\end{document}

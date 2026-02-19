@@ -1,0 +1,98 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+\title{テストケース: オーロラ}
+\author{QA Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{テストケーステンプレート}
+フィールド: ID、要件 ID、前提条件、ステップ、期待される結果、ステータス。
+
+\section{機能テストケース (ベースライン)}
+\begin{longtable}{|p{0.10\linewidth}|p{0.12\linewidth}|p{0.58\linewidth}|p{0.14\linewidth}|}
+\hline
+Test ID & 要求ID & 期待される結果 & 状態 \\
+\hline
+TC-01 & FR-01 & プライマリ アクション ボタンは、初期ロード時に表示され、明確にラベルが付けられます。 & Pass \\
+\hline
+TC-02 & FR-02 & ボタンをクリックすると夜空モードに遷移します。 & Pass \\
+\hline
+TC-03 & FR-03 & オーロラのアニメーションはアクティブ化後に開始され、表示されたままになります。 & Pass \\
+\hline
+TC-04 & FR-04 & キーボードのアクティブ化 (Enter/Space) も同じ遷移をトリガーします。 & Pass \\
+\hline
+TC-05 & FR-05 & レイアウトはモバイルおよびデスクトップのテスト サイズで引き続き使用できます。 & Pass \\
+\hline
+TC-06 & FR-06 & 動きを減らした設定では、激しい動きの効果が低下または無効になります。 & Pass \\
+\hline
+\end{longtable}
+
+\section{非機能テスト ケース (ベースライン)}
+\begin{longtable}{|p{0.10\linewidth}|p{0.12\linewidth}|p{0.58\linewidth}|p{0.14\linewidth}|}
+\hline
+Test ID & 要求ID & 期待される結果 & 状態 \\
+\hline
+TC-07 & NFR-01 & 活性化応答は、ベースライン条件下で 200 ミリ秒以内に始まります。 & Pass \\
+\hline
+TC-08 & NFR-02 & アクセシビリティのベースライン チェックが目標のしきい値に合格しました。 & Pass \\
+\hline
+TC-09 & NFR-03 & v1 バンドルには重いランタイム アニメーション ライブラリは存在しません。 & Pass \\
+\hline
+TC-10 & NFR-04 & 通常のフロー コンソール トレースには、捕捉されなかったエラーは表示されません。 & Pass \\
+\hline
+\end{longtable}
+
+\section{v1.2 拡張テスト ケース (リアリズム + インタラクション)}
+\begin{longtable}{|p{0.10\linewidth}|p{0.12\linewidth}|p{0.58\linewidth}|p{0.14\linewidth}|}
+\hline
+Test ID & 要求ID & 期待される結果 & 状態 \\
+\hline
+TC-11 & FR-03 & 有効なビデオ アセットの場合、アクティベーションではビデオ ファースト オーロラが使用され、それに応じてステータスが更新されます。 & Pending \\
+\hline
+TC-12 & FR-03 & ビデオ アセットが見つからないか失敗した場合、アクティベーションをブロックすることなく、キャンバス フォールバックが自動的に開始されます。 & Pending \\
+\hline
+TC-13 & FR-06 & 縮小モーション モードでは、ビデオ パスは使用されず、縮小キャンバス モードが実行されます。 & Pending \\
+\hline
+TC-14 & NFR-01 & ビデオファーストパスが有効になっている間、アクティベーションは中央値 200 ミリ秒以内に留まります。 & Pending \\
+\hline
+TC-15 & NFR-02 & リアリズム更新後も、アクセシビリティ スコアは 90 以上のままで、キーボード パリティはそのまま残ります。 & Pending \\
+\hline
+TC-16 & FR-05 & ポインタの動きにより、シーンの微妙な視差/カーソルのグローが駆動され、インタラクションのリセットはブラー/可視性の変化時に正しく動作します。 & Pending \\
+\hline
+TC-17 & FR-06 & モーション軽減モードは、アクティベーション動作を維持しながら、インタラクションの影響が大きい効果 (視差/リップル/傾き) を抑制します。 & Pending \\
+\hline
+\end{longtable}
+
+\section{実行ログ}
+\begin{itemize}
+  \item 2026-02-18: TC-01 が通過しました。
+  \item 2026-02-18: TC-02 が通過しました。
+  \item 2026-02-18: TC-03 が通過しました。
+  \item 2026-02-18: TC-04 が失敗しました (初期実装ではキーボードの動作が一貫していませんでした)。
+  \item 2026-02-18: キーボード アクティベーションの修正が \texttt{app.js} に実装されました。 TC-04は再検査が必要です。
+  \item 2026-02-18: TC-04 再テストが合格し、検証されました。
+  \item 2026-02-18: TC-05 が通過しました。
+  \item 2026-02-18: TC-06 が通過しました。
+  \item 2026-02-18: TC-07 が通過しました。
+  \item 2026-02-18: TC-08 が通過しました (Lighthouse アクセシビリティ ベースラインが検証されました)。
+  \item 2026-02-18: TC-09 が通過しました (バニラ JS 依存関係制約が検証されました)。
+  \item 2026-02-18: TC-10 が合格しました (通常のフローでは捕捉されないランタイム エラーは観察されませんでした)。
+  \item 2026-02-18: v1.2 リアリズムおよびインタラクション ランタイム用に TC-11 から TC-17 が定義されました。実行保留中。
+\end{itemize}
+
+\section{回帰セット}
+アニメーション、メディア、またはインタラクションに重要な変更を加えるたびに、TC-01 から TC-17 を実行します。
+
+\end{document}

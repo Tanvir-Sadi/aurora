@@ -1,0 +1,59 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+\title{要件トレーサビリティ マトリックス (RTM): Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{トレーサビリティルール}
+\begin{itemize}
+  \item すべての PRD/SRS 要件 ID は、設計および少なくとも 1 つのテスト ケースにマップする必要があります。
+  \item 要件の変更には、SDS とテスト ケースの更新を同期する必要があります。
+\end{itemize}
+
+\section{要件トレーサビリティ マトリックス}
+\begin{longtable}{|p{0.12\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|p{0.22\linewidth}|p{0.14\linewidth}|}
+\hline
+Requirement ID & 要件の概要 & SDS の適用範囲 & テスト範囲 & 実行ステータス \\
+\hline
+FR-01 & 表示されるプライマリアクションボタン & UI レイヤーとインタラクション コントローラー & TC-01 & Pass \\
+\hline
+FR-02 & ナイトモードへの移行 & インタラクションコントローラーとCSSトランジション & TC-02 & Pass \\
+\hline
+FR-03 & オーロラアニメーションを開始 & アニメーション エンジンとメディア ランタイム戦略 & TC-03, TC-11, TC-12 & パス (ベースライン)、v1.2 再検証保留中 \\
+\hline
+FR-04 & キーボードアクティベーションのサポート & インタラクション コントローラーとアクセシビリティ ハンドラー & TC-04 & Pass \\
+\hline
+FR-05 & 応答性が高く安定したインタラクション レイアウト & UI レイヤーの応答ルールとポインター操作の処理 & TC-05, TC-16 & パス (ベースライン)、v1.2 再検証保留中 \\
+\hline
+FR-06 & 動作を減らした動作 & アクセシビリティハンドラーとアニメーションブランチ & TC-06, TC-13, TC-17 & パス (ベースライン)、v1.2 再検証保留中 \\
+\hline
+NFR-01 & インタラクション <= 200 ミリ秒 & イベントフローとパフォーマンスのチューニング & TC-07, TC-14 & パス (ベースライン)、v1.2 再検証保留中 \\
+\hline
+NFR-02 & アクセシビリティのベースラインしきい値 & セマンティック HTML とキーボード/フォーカス ルール & TC-08, TC-15 & パス (ベースライン)、v1.2 再検証保留中 \\
+\hline
+NFR-03 & バニラ JS 制約 & アーキテクチャと依存関係のポリシー & TC-09 & Pass \\
+\hline
+NFR-04 & 捕捉されない実行時エラーはありません & エラーセーフな実行パス & TC-10 & Pass \\
+\hline
+\end{longtable}
+
+\section{現在のギャップ}
+\begin{itemize}
+  \item ベースライン MVP テスト セット (TC-01 ～ TC-10) は、\texttt{v1.1.0} に完全に合格しています。
+  \item v1.2 リアリズム/インタラクション再検証ケース (TC-11 から TC-17) が計画されており、実行待ちです。
+\end{itemize}
+
+\end{document}

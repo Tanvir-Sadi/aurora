@@ -1,0 +1,94 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{製品要件ドキュメント (PRD): Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{製品概要}
+Aurora は、単一ページのインタラクティブな Web サイトです。ユーザーがボタンをアクティブにすると、ページが夜空に変わり、オーロラのアニメーションが実行されます。
+
+\section{製品の目標}
+\begin{itemize}[leftmargin=*]
+  \item ワンクリックで記憶に残る視覚的なインタラクションを作成します。
+  \item スムーズで応答性の高いエクスペリエンスを維持します。
+  \item アクセシビリティを第一級の要件として維持します。
+\end{itemize}
+
+\section{対象ユーザー}
+\begin{itemize}[leftmargin=*]
+  \item ポートフォリオの閲覧者とデモの閲覧者。
+  \item ユーザーはデスクトップまたはモバイル デバイスから閲覧します。
+\end{itemize}
+
+\section{ユーザーストーリー}
+\begin{itemize}[leftmargin=*]
+  \item 訪問者として、すぐにエクスペリエンスを開始できるように、明確な行動喚起ボタンが必要です。
+  \item 訪問者として、インタラクションが洗練されていると感じられるように、夜間モードにスムーズに移行したいと考えています。
+  \item 訪問者として、自分のデバイスで遅延のないオーロラ アニメーションが必要です。
+  \item キーボード ユーザーとして、マウスを使用せずに同じ動作をトリガーしたいと考えています。
+  \item 動きに敏感なユーザーとして、システム設定でアニメーションの量を減らしたいと考えています。
+\end{itemize}
+
+\section{機能要件}
+\begin{longtable}{|p{0.14\linewidth}|p{0.74\linewidth}|}
+\hline
+ID & 要件 \\
+\hline
+FR-01 & 夜間モードを開始するには、目に見えるラベル付きの主ボタンを提供します。 \\
+\hline
+FR-02 & アクティブ化すると、背景がデフォルト状態から夜空に遷移します。 \\
+\hline
+FR-03 & トランジション開始後にオーロラアニメーションを開始して表示します。 \\
+\hline
+FR-04 & ポインタのクリックとキーボードのアクティブ化の両方をサポートします。 \\
+\hline
+FR-05 & モバイルおよびデスクトップのビューポートの応答性の高いレイアウトを維持します。 \\
+\hline
+FR-06 & 重いアニメーションを減らすか無効にして、\texttt{prefers-reduced-motion} を尊重します。 \\
+\hline
+\end{longtable}
+
+\section{非機能要件}
+\begin{longtable}{|p{0.14\linewidth}|p{0.74\linewidth}|}
+\hline
+ID & 要件 \\
+\hline
+NFR-01 & トリガー応答時間は、ベースライン テスト ハードウェアで 200 ミリ秒以下である必要があります。 \\
+\hline
+NFR-02 & MVP ページで Lighthouse アクセシビリティ スコア >= 90 を達成します。 \\
+\hline
+NFR-03 & 通常の対話フロー中に重大なコンソール エラーは発生しません。 \\
+\hline
+NFR-04 & v1 には標準の HTML/CSS/JS を使用します。大規模なランタイム ライブラリは避けてください。 \\
+\hline
+\end{longtable}
+
+\section{優先順位付け}
+\subsection{MVP (必須)}
+FR-01～FR-06、NFR-01～NFR-04。
+
+\subsection{MVP 後 (可能性あり)}
+\begin{itemize}[leftmargin=*]
+  \item 追加のテーマのプリセット。
+  \item ユーザーオプトインによるオーディオ効果。
+  \item 必要に応じて高度なシェーダ効果。
+\end{itemize}
+
+\section{合格基準}
+MVP は、必須要件がすべて実装され、テスト証拠がテスト成果物に記録された場合に受け入れられます。
+
+\end{document}

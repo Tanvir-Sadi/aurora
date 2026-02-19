@@ -1,0 +1,100 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{{./}{../sdlc/uml/}{latex/sdlc/uml/}}
+\usepackage[hidelinks]{hyperref}
+
+\title{ソフトウェア要件仕様 (SRS): Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{導入}
+\subsection{目的}
+バニラ HTML、CSS、JavaScript を使用して実装された Aurora MVP のソフトウェア要件を定義します。
+
+\subsection{範囲}
+このシステムは、インタラクティブなビジュアル アニメーション トリガーを備えたフロントエンド専用のシングルページ アプリケーションです。
+
+\section{全体的な説明}
+\subsection{製品の視点}
+Aurora はブラウザ内で実行され、v1 のバックエンド統合は必要ありません。
+
+\subsection{動作環境}
+\begin{itemize}[leftmargin=*]
+  \item デスクトップブラウザ: 最新の Chrome、Edge、Firefox。
+  \item モバイル ブラウザ: 最新の Chromium ベースおよび Safari 互換エンジン。
+\end{itemize}
+
+\section{特定の要件}
+\subsection{機能要件}
+\begin{longtable}{|p{0.14\linewidth}|p{0.72\linewidth}|}
+\hline
+ID & 声明 \\
+\hline
+FR-01 & システムは、ページの初期状態で主アクション ボタンを表示します。 \\
+\hline
+FR-02 & ボタンがアクティブになると、システムはページの背景を夜空モードに切り替えます。 \\
+\hline
+FR-03 & システムは、ナイトモードのアクティブ化後にオーロラアニメーションを開始します。 \\
+\hline
+FR-04 & システムは、主要なアクション ボタンのキーボードのアクティブ化を許可します。 \\
+\hline
+FR-05 & システムは、ターゲット ビューポート サイズ全体でコンテンツを使用可能な状態に保ちます。 \\
+\hline
+FR-06 & モーションの低減が要求された場合、システムはアニメーションの強度を低減します。 \\
+\hline
+\end{longtable}
+
+\subsection{非機能要件}
+\begin{longtable}{|p{0.14\linewidth}|p{0.72\linewidth}|}
+\hline
+ID & 声明 \\
+\hline
+NFR-01 & 最初の相互作用は、ベースライン条件下で 200 ミリ秒以内に開始されます。 \\
+\hline
+NFR-02 & ページには、ベースライン チェックで重大なアクセシビリティ違反があってはなりません。 \\
+\hline
+NFR-03 & システムは、v1 の重いアニメーション ライブラリへの依存を回避します。 \\
+\hline
+NFR-04 & このページは、運用環境での使用フローで捕捉されないランタイム エラーを回避する必要があります。 \\
+\hline
+\end{longtable}
+
+\section{外部インターフェースの要件}
+\begin{itemize}[leftmargin=*]
+  \item UI: 1 つのプライマリ アクティベーション コントロールおよびビジュアル シーン レイヤー。
+  \item ハードウェア: 標準キーボード、マウス、タッチ インターフェイス。
+  \item ソフトウェア: JavaScript が有効になっているブラウザ。
+\end{itemize}
+
+\section{UML アーティファクト (PlantUML)}
+\subsection{ユースケース図}
+\begin{center}
+  \includegraphics[width=0.88\linewidth]{srs_use_case.png}\\
+  \small Figure: Aurora Use Case Diagram
+\end{center}
+\noindent PlantUML source: \texttt{uml/srs\_use\_case.puml}
+
+\subsection{アクティビティ図 (主要なユーザー フロー)}
+\begin{center}
+  \includegraphics[width=0.72\linewidth]{srs_activity.png}\\
+  \small Figure: Aurora Primary Activity Flow
+\end{center}
+\noindent PlantUML source: \texttt{uml/srs\_activity.puml}
+
+\section{トレーサビリティに関するメモ}
+このドキュメントの要件 ID は、SDS、テスト ケース、および RTM で使用されます。
+
+\end{document}

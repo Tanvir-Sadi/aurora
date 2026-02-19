@@ -1,0 +1,77 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{リリースおよび展開計画: Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{リリース範囲}
+\begin{itemize}[leftmargin=*]
+  \item 公開されたベースライン: \texttt{v1.1.0} には、FR-01 ～ FR-06 および NFR-01 ～ NFR-04 が含まれます。
+  \item 次のターゲット: \texttt{v1.2.0} のリアリズムとインタラクションのアップグレード (フォールバック + インタラクティブ効果を備えたビデオファーストのオーロラ)。
+\end{itemize}
+
+\section{導入戦略}
+\begin{itemize}[leftmargin=*]
+  \item 導入モデル: 静的ホスティング。
+  \item ビルド出力: 静的 HTML/CSS/JS とメディア アセット。
+  \item ターゲットリポジトリ: \texttt{https://github.com/Tanvir-Sadi/aurora}。
+\end{itemize}
+
+\section{リリースチェックリストの結果 (公開されたベースライン)}
+\begin{itemize}[leftmargin=*]
+  \item 完了: テスト ケース TC-01 から TC-10 が実行され、合格として記録されました。
+  \item 完了: オープンな重大な欠陥または重大な欠陥はありません。
+  \item 完了: Lighthouse のパフォーマンスとアクセシビリティのチェックがキャプチャされました。
+  \item 完了: 動作を減らした動作が検証されました。
+  \item 完了: SDLC ドキュメントが実装ベースラインと同期されました。
+\end{itemize}
+
+\section{出版されたリリース記録}
+\begin{itemize}[leftmargin=*]
+  \item 発売日：2026-02-18。
+  \item 公開タグ：\texttt{v1.1.0}。
+  \item ソースブランチ: \texttt{main}。
+  \item リリースコミット: \texttt{5665d06}。
+\end{itemize}
+
+\section{v1.2 候補チェックリスト (現在)}
+\begin{itemize}[leftmargin=*]
+  \item 完了: ランタイムで提供されるリアリズム実装 (B-01 から B-03)。
+  \item 完了: インタラクション レイヤーが提供されました (ポインターの視差、カーソルのグロー、ボタンのマイクロ フィードバック)。
+  \item 完了: メディア アセットが追加されました (\texttt{assets/aurora-loop.webm}、\texttt{assets/aurora-loop.mp4})。
+  \item 保留中: TC-11 ～ TC-17 を実行し、証拠を収集します。
+  \item 保留中: リアリズムとインタラクションの更新後にパフォーマンス/アクセシビリティのガードレールを確認します。
+  \item 保留中: \texttt{v1.2.0} リリース ノートを準備し、タグを公開します。
+\end{itemize}
+
+\section{ロールバック計画}
+\begin{itemize}[leftmargin=*]
+  \item 以前のデプロイメントアーティファクトを利用可能な状態に保ちます。
+  \item 必要に応じて、以前の安定リリース タグ (\texttt{v1.1.0}) に戻します。
+  \item 問題の概要を記載したロールバック ノートを公開します。
+\end{itemize}
+
+\section{ゴーライブ検証}
+\begin{itemize}[leftmargin=*]
+  \item \texttt{v1.1.0}: 実稼働アクティベーション フローは Chrome、Edge、Firefox で検証されました。
+  \item \texttt{v1.2.0}: TC-11 から TC-17 までの完了待ちの検証。
+\end{itemize}
+
+\section{リリースの所有権}
+リリースマネージャー: Tanvir Sadi。
+
+\end{document}

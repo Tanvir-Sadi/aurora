@@ -1,0 +1,131 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{{./}{../sdlc/uml/}{latex/sdlc/uml/}}
+\usepackage[hidelinks]{hyperref}
+
+\title{ソフトウェア設計仕様 (SDS): Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{アーキテクチャの概要}
+\subsection{デザインスタイル}
+バニラ JavaScript モジュールと CSS レイヤーを使用したクライアント側のモジュラー設計。
+
+\subsection{上位レベルのコンポーネント}
+\begin{longtable}{|p{0.24\linewidth}|p{0.66\linewidth}|}
+\hline
+Component & 責任 \\
+\hline
+UI Layer (HTML/CSS) & レイアウト、ボタンのプレゼンテーション、シーンレイヤー、応答動作 \\
+\hline
+Interaction Controller (JS) & イベント処理、状態遷移（デフォルト -> 夜間） \\
+\hline
+Animation Engine (JS) & requestAnimationFrame ループ、オーロラ モーション計算、およびフォールバック レンダリング \\
+\hline
+Aurora Media Layer (Video) & ナイトモードでのビデオファーストのリアルなオーロラ再生 \\
+\hline
+Accessibility Handler (JS/CSS) & キーボードのサポートとモーション軽減ロジック \\
+\hline
+\end{longtable}
+
+\section{詳細設計}
+\subsection{状態モデル}
+\begin{itemize}[leftmargin=*]
+  \item 状態 1: \texttt{default}
+  \item 状態 2: \texttt{night-active}
+  \item オプションの状態フラグ: \texttt{reduced-motion}、\texttt{is-animating}
+\end{itemize}
+
+\subsection{イベントの流れ}
+\begin{enumerate}[leftmargin=*]
+  \item ユーザーが主ボタンをトリガーします。
+  \item コントローラーは\texttt{night-active}クラスを設定します。
+  \item アニメーション エンジンが初期化され、フレーム ループが開始されます。
+  \item ポインタの動きにより、シーンの深度キューのインタラクティブな視差オフセットが更新されます。
+  \item 低減モーションがアクティブな場合、エンジンは低減されたエフェクト パスを実行します。
+\end{enumerate}
+
+\subsection{Aurora レンダリング戦略 (v1.2 リアリズム アップデート)}
+\begin{itemize}[leftmargin=*]
+  \item ランタイムでは、ビデオファーストのリアルなオーロラ再生を使用して、CPU 使用率を低く抑えた映画のような出力を実現します。
+  \item ビデオ アセットが利用できない場合、または再生がブロックされている場合、キャンバス レンダラーは自動フォールバックとして残ります。
+  \item レンダラーは、正弦波バンドのみではなく、ノイズ変調された波頭ラインを備えた多層カーテン ジオメトリを使用します。
+  \item 各層は垂直方向のライト ベールの尾部を計算して、高度の変動と深度の分離をシミュレートします。
+  \item 大気のもやのパスはフレームごとにレンダリングされ、トランジションを柔らかくし、シーンの深度を高めます。
+  \item カラー パイプラインは、グラデーション フォールオフとトップエッジ グローを備えた動的な色相ドリフトを使用して、リアルなブレンドを実現します。
+  \item UI には、知覚される応答性を向上させる軽量のマイクロインタラクション (ボタンの傾きと波紋フィードバック) が含まれています。
+  \item モーション削減モードでは、同じアーキテクチャが維持され、レイヤーが減り、モーションの振幅が低くなります。
+\end{itemize}
+
+\subsection{ファイルレベルの設計 (現在)}
+\begin{itemize}[leftmargin=*]
+  \item \texttt{index.html}: 構造マークアップおよび制御要素。
+  \item \texttt{styles.css}: シーンのスタイルとトランジション。
+  \item \texttt{app.js}: 初期化、インタラクション制御、ポインタの視差、ボタンのマイクロアニメーション。
+  \item \texttt{aurora.js}: ノイズ機能、カーテン生成、ヘイズ パス、フレーム ループを備えたフォールバック キャンバス レンダラー。
+  \item \texttt{assets/aurora-loop.webm|mp4}: ビデオファーストのリアルなオーロラ ソース。
+\end{itemize}
+
+\section{設計上の決定}
+\begin{longtable}{|p{0.18\linewidth}|p{0.72\linewidth}|}
+\hline
+Decision & 理論的根拠 \\
+\hline
+Use video-first realistic mode with canvas fallback & ランタイムの軽量性と回復力を維持しながら、映画のようなリアリズムを実現します \\
+\hline
+Use vanilla JS in v1/v1.2 & 学習と SDLC トレーサビリティのためにフォールバック バンドルを透過的に保ちます \\
+\hline
+Use CSS transitions for base mode switch & 効率的かつシンプルで広範なブラウザをサポート \\
+\hline
+Use requestAnimationFrame & ブラウザネイティブのアニメーションのタイミングと制御 \\
+\hline
+Use noise-modulated curtains in v1.2 & 繰り返しが少なく、より現実的なオーロラの動きのパターンを生成します \\
+\hline
+Add atmospheric haze and glow falloff & 外部ライブラリを使用せずに、奥行き知覚と色のリアリズムを向上させます。 \\
+\hline
+Include reduced-motion branch & アクセシビリティとパフォーマンスのフォールバック \\
+\hline
+\end{longtable}
+
+\section{UML 設計図 (PlantUML)}
+\subsection{コンポーネント図}
+\begin{center}
+  \includegraphics[width=0.52\linewidth]{sds_component.png}\\
+  \small Figure: Aurora Component Diagram
+\end{center}
+\noindent PlantUML source: \texttt{uml/sds\_component.puml}
+
+\subsection{状態図}
+\begin{center}
+  \includegraphics[width=0.62\linewidth]{sds_state.png}\\
+  \small Figure: Aurora UI State Diagram
+\end{center}
+\noindent PlantUML source: \texttt{uml/sds\_state.puml}
+
+\subsection{シーケンス図（アクティベーションの流れ）}
+\begin{center}
+  \includegraphics[width=0.88\linewidth]{sds_sequence.png}\\
+  \small Figure: Aurora Activation Sequence
+\end{center}
+\noindent PlantUML source: \texttt{uml/sds\_sequence.puml}
+
+\section{要件の範囲}
+SDS は SRS の FR-01 ～ FR-06 および NFR-01 ～ NFR-04 をサポートします。
+
+\end{document}
+
+
+

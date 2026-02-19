@@ -1,0 +1,98 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{プロジェクト計画: Aurora Interactive Web サイト}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{計画ベースライン}
+\begin{itemize}[leftmargin=*]
+  \item ライフサイクル モデル: 反復的なミニマイルストーン (毎週のチェックポイント)。
+  \item 配信戦略: 最初に MVP、次に制御された増分でリアリズムに重点を置いたアップグレードを行います。
+  \item テクノロジーベースライン: v1.2 のビデオファースト再生とキャンバスフォールバックを備えたバニラ HTML/CSS/JS。
+\end{itemize}
+
+\section{作業分解構造}
+\begin{longtable}{|p{0.10\linewidth}|p{0.52\linewidth}|p{0.14\linewidth}|p{0.14\linewidth}|}
+\hline
+ID & ワークパッケージ & 所有者 & 状態 \\
+\hline
+WP-01 & 要件とUXの意図を最終決定する & タンヴィール & 完了（FR/NFRロック済み） \\
+\hline
+WP-02 & ページ構造と基本スタイルを構築する & タンヴィール & Completed \\
+\hline
+WP-03 & 夜空への遷移動作を実装する & タンヴィール & Completed \\
+\hline
+WP-04 & バニラ JS でオーロラ アニメーション ループを実装する & タンヴィール & Completed \\
+\hline
+WP-05 & 応答性が高く動きを抑えた動作を追加する & タンヴィール & Completed \\
+\hline
+WP-06 & テストの実行とRTMの更新 & タンヴィール & 完了（TC-01～TC-10合格） \\
+\hline
+WP-07 & MVP をデプロイし、リリース ノートを公開する & タンヴィール & 完了 (2026-02-18 に v1.1.0 としてリリース) \\
+\hline
+WP-08 & リアルな Aurora ランタイム (ビデオ ファースト + キャンバス フォールバック)、インタラクション効果 (視差/カーソル グロー/ボタン フィードバック)、およびメディア アセットを実装します。 & タンヴィール & 完了 (2026 年 2 月 18 日に実装) \\
+\hline
+WP-09 & v1.2 回帰と現実性検証の実行 (パフォーマンス/アクセシビリティ ガードレール) & タンヴィール & In Progress \\
+\hline
+WP-10 & v1.2 リリース パッケージ、タグ、リリース ノートを準備する & タンヴィール & Planned \\
+\hline
+WP-11 & v1.2 のリリース後の完全な検証とドキュメントの同期 & タンヴィール & Planned \\
+\hline
+\end{longtable}
+
+\section{スケジュール}
+\begin{longtable}{|p{0.32\linewidth}|p{0.20\linewidth}|p{0.36\linewidth}|}
+\hline
+アクティビティウィンドウ & 日付範囲 & 出力 \\
+\hline
+MVP の計画とベースラインのリリース & 2026-02-18 から 2026-02-18 & v1.1.0 は TC-01 から TC-10 パスとともにリリースされました \\
+\hline
+v1.2 リアリズムとインタラクションの実装 & 2026-02-18 から 2026-02-19 & ビデオファーストの Aurora ランタイム、フォールバック パス、およびインタラクティブなエフェクトを提供 \\
+\hline
+v1.2の検証とチューニング & 2026-02-19 から 2026-03-05 & 回帰の証拠、灯台のガードレールのチェック、欠陥の修正 \\
+\hline
+v1.2 リリースの準備 & 2026-03-06 から 2026-03-10 & リリースチェックリスト、メモ、展開、リリース後の同期 \\
+\hline
+\end{longtable}
+
+\section{リソース計画}
+\begin{itemize}[leftmargin=*]
+  \item 主要リソース: Tanvir Sadi (開発、QA、ドキュメント)。
+  \item ビジュアル品質と承認サインオフのためのオプションのレビュー担当者サポート。
+\end{itemize}
+
+\section{リスクと軽減計画}
+\begin{longtable}{|p{0.10\linewidth}|p{0.34\linewidth}|p{0.44\linewidth}|}
+\hline
+リスクID & リスク & 緩和 \\
+\hline
+R-01 & リアリズムとインタラクションのアップデートによりパフォーマンスが目標を下回る & 圧縮ビデオの再生を優先し、キャンバスのフォールバックを軽量に保ち、Lighthouse のガードレールを適用します \\
+\hline
+R-02 & ブラウザ間での視覚的な不一致またはコーデックのサポートギャップ & WebM と MP4 の両方を出荷し、キャンバス パスに自動フォールバック \\
+\hline
+R-03 & v1.2 でのスコープ拡張 & 優先順位の高いバックログ項目に限定し、検証が終了するまで重要でない制御を延期する \\
+\hline
+\end{longtable}
+
+\section{コミュニケーション計画}
+\begin{itemize}[leftmargin=*]
+  \item 毎週の内部ステータスの更新。
+  \item SDLC ドキュメントのマイルストーン完了の概要。
+  \item リリース ノートは公開されたタグごとに更新されます。
+\end{itemize}
+
+\end{document}

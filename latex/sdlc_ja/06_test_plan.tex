@@ -1,0 +1,119 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{テスト計画: オーロラ}
+\author{QA Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{テスト戦略}
+\begin{itemize}[leftmargin=*]
+  \item SRS (FR および NFR ID) からの要件を検証します。
+  \item 手動の探索的テストとチェックリストベースの検証を組み合わせます。
+  \item インタラクション、アクセシビリティ、パフォーマンス、およびフォールバック動作を優先します。
+\end{itemize}
+
+\section{テストの範囲}
+\subsection{範囲内}
+\begin{itemize}[leftmargin=*]
+  \item ポインタとキーボードによるボタンのアクティブ化。
+  \item 夜の移行の正確さ。
+  \item ビデオファーストモードとキャンバスフォールバックモードでの Aurora の動作。
+  \item インタラクティブな視覚応答 (ポインターの視差、カーソルのグロー、ボタンのマイクロ フィードバック)。
+  \item モーション動作の軽減とランタイムモードの切り替え。
+  \item 代表的なビューポート サイズでのレスポンシブ レイアウト。
+\end{itemize}
+
+\subsection{範囲外}
+\begin{itemize}[leftmargin=*]
+  \item バックエンドまたは API テスト (v1/v1.2 にはなし)。
+  \item ターゲット マトリックス外のレガシー ブラウザ互換性テスト。
+\end{itemize}
+
+\section{テスト環境}
+\begin{itemize}[leftmargin=*]
+  \item OS: Windows ベースライン ワークステーション。
+  \item ブラウザ: 最新の Chrome、Edge、Firefox。
+  \item ツール: ブラウザ DevTools、Lighthouse、手動キーボード テスト。
+  \item テスト対象のメディア資産: \texttt{assets/aurora-loop.webm} および \texttt{assets/aurora-loop.mp4}。
+\end{itemize}
+
+\section{参入基準と退出基準}
+\subsection{エントリ}
+\begin{itemize}[leftmargin=*]
+  \item FR-01～FR-06実装完了。
+  \item フォールバック パスと統合されたビデオファースト ランタイム。
+  \item ローカルブラウザでデプロイ可能なビルド。
+\end{itemize}
+
+\subsection{出口}
+\begin{itemize}[leftmargin=*]
+  \item すべての重大な欠陥と重大な欠陥は解決されるか、明示的に延期されます。
+  \item 必須のテスト ケースはすべて合格します。
+  \item RTM は実行ステータスで更新されました。
+\end{itemize}
+
+\section{実行スナップショット}
+\subsection{ベースライン (v1.1.0)}
+\begin{itemize}[leftmargin=*]
+  \item TC-01: パス
+  \item TC-02: パス
+  \item TC-03: パス
+  \item TC-04: 合格 (検証済み)
+  \item TC-05: パス
+  \item TC-06: パス
+  \item TC-07: パス
+  \item TC-08: パス
+  \item TC-09: パス
+  \item TC-10: パス
+\end{itemize}
+
+\subsection{v1.2 再検証 (現在)}
+\begin{itemize}[leftmargin=*]
+  \item TC-11 から TC-17 はリアリズムとインタラクションの検証のために定義されています。
+  \item ステータス: 実行保留中 (WP-09 が進行中)。
+\end{itemize}
+
+\section{欠陥管理}
+\begin{itemize}[leftmargin=*]
+  \item 重大度レベル: クリティカル、高、中、低。
+  \item クリティカル/高は、リリース公開前に解決する必要があります。
+\end{itemize}
+
+\subsection{欠陥ログ}
+\begin{longtable}{|p{0.16\linewidth}|p{0.26\linewidth}|p{0.20\linewidth}|p{0.28\linewidth}|}
+\hline
+Defect ID & 関連するテスト & 重大度 & 状態 \\
+\hline
+D-01 & TC-04 キーボードのアクティベーションの不一致 & 中くらい & 2026 年 2 月 18 日の再テストに成功したため閉鎖されました \\
+\hline
+\end{longtable}
+
+\section{試験スケジュール}
+\begin{longtable}{|p{0.36\linewidth}|p{0.20\linewidth}|p{0.34\linewidth}|}
+\hline
+Phase & ウィンドウ & 出力 \\
+\hline
+Baseline validation (v1.1.0) & 2026-02-18 から 2026-02-18 & TC-01～TC-10完成 \\
+\hline
+v1.2 realism and interaction test design & 2026-02-19 から 2026-02-20 & TC-11からTC-17への最終決定 \\
+\hline
+v1.2 execution and regression & 2026-02-20 から 2026-03-05 & 合否の証拠と欠陥の処理 \\
+\hline
+Release readiness verification & 2026-03-06 から 2026-03-10 & v1.2 候補の最終合格レポート \\
+\hline
+\end{longtable}
+
+\end{document}

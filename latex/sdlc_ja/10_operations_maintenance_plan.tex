@@ -1,0 +1,72 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{運用保守計画: Aurora}
+\author{Project Team}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{運用モデル}
+Aurora は、軽量な運用ニーズを備えた静的フロントエンド アプリケーションです。
+
+\section{現在の生産ベースライン}
+\begin{itemize}[leftmargin=*]
+  \item 現在のバージョン: \texttt{v1.1.0}。
+  \item 発売日：2026-02-18。
+  \item ホスティング モデル: リポジトリ アーティファクトからの静的サイト。
+  \item ランタイム レンダリング: ベースライン リリースの Canvas Aurora、v1.2 ではビデオ ファースト モードとインタラクティブな視覚効果が導入されています。
+  \item リリース時の既知の重大/重大な生産上の欠陥: なし。
+\end{itemize}
+
+\section{監視と警告}
+\begin{itemize}[leftmargin=*]
+  \item 実稼働 URL の稼働時間をチェックします。
+  \item 利用可能な場合、ブラウザー/セッション ログからの基本的なクライアント側エラーのレビュー。
+  \item 大きな変更後の Lighthouse チェックは定期的に行われます。
+  \item デプロイ後に、\texttt{assets/aurora-loop.webm} および \texttt{assets/aurora-loop.mp4} のメディア配信が成功したことを確認します。
+  \item 各展開後にポインタとキーボードの対話フローをスポットチェックします。
+\end{itemize}
+
+\section{インシデントと問題の管理}
+\begin{itemize}[leftmargin=*]
+  \item インシデントを重大度 (重大、高、中、低) ごとに分類します。
+  \item 重大な問題 (サイトが利用できない、またはコアの相互作用が壊れている) には、即時のロールバックまたはホットフィックスが必要です。
+  \item ビデオの再生が広範囲に失敗した場合は、キャンバスのフォールバック パスに切り替え、重大度の高い欠陥として扱います。
+  \item インタラクションエフェクトによってユーザビリティやアクセシビリティが低下する場合は、エフェクトレイヤーを無効化/ロールバックして根本原因を追跡します。
+  \item 根本原因と予防措置をフォローアップノートに記録します。
+\end{itemize}
+
+\section{バックアップとリカバリ}
+\begin{itemize}[leftmargin=*]
+  \item 以前のデプロイ アーティファクトまたはリリース タグを保持します。
+  \item 回復パスは、最後に確認された安定した静的バンドルを再デプロイしています。
+  \item 次のリリース候補のプライマリ ロールバック タグ: \texttt{v1.1.0}。
+\end{itemize}
+
+\section{パッチとアップグレードの計画}
+\begin{itemize}[leftmargin=*]
+  \item 改善と修正のための毎週のレビューウィンドウ。
+  \item 目に見えるすべてのアニメーション、メディア、またはインタラクションの変更に対して回帰セットを再実行します。
+  \item v1.2 の場合は、リリース公開前に TC-11 から TC-17 を閉じてください。
+  \item 現在のアプローチではリアリズム/パフォーマンスの制約を満たすことができない場合にのみ、アーキテクチャを再検討してください。
+\end{itemize}
+
+\section{SLA のサポート (プロジェクトレベル)}
+\begin{itemize}[leftmargin=*]
+  \item 重大な問題への対応目標: 24 時間以内。
+  \item 高い問題対応目標: 48 時間以内。
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,126 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Yu Mincho}{\setCJKmainfont{Yu Mincho}}{\setCJKmainfont{MS Mincho}}
+\IfFontExistsTF{Yu Gothic UI}{\setCJKmonofont{Yu Gothic UI}}{\setCJKmonofont{MS Gothic}}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\title{プロジェクト憲章: Aurora Interactive Web サイト}
+\author{Prepared by Tanvir Sadi}
+\date{2026-02-18}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{プロジェクト概要}
+\subsection{プロジェクトの基本}
+\begin{itemize}[leftmargin=*]
+  \item プロジェクト名: Aurora Interactive Web サイト
+  \item 憲章バージョン: 1.1
+  \item プロジェクトオーナー: タンヴィル・サディ
+  \item 現在のフェーズ: 計画と設計のベースライン
+  \item ターゲット MVP リリース: 2026-03-20
+\end{itemize}
+
+\subsection{背景}
+このプロジェクトは、単一ページのアニメーション Web エクスペリエンスを提供します。ユーザーがボタン 1 つをクリックすると、ページが夜空に切り替わり、オーロラのアニメーションが開始されます。
+
+\subsection{問題提起}
+ほとんどの静的ページでは、ユーザー エンゲージメントが制限されています。このプロジェクトには、フロントエンド専用の MVP として提供できる、軽量でアクセスしやすく、パフォーマンスの高いアニメーション エクスペリエンスが必要です。
+
+\subsection{ビジョンステートメント}
+デスクトップでもモバイルでも没入感のある、高速でアクセスしやすいワンクリックの Aurora Web サイトを提供します。
+
+\section{現状と決定履歴}
+\begin{itemize}[leftmargin=*]
+  \item SDLC ドキュメント構造は \texttt{latex/sdlc} に作成されます。
+  \item プロジェクトの方向性はフロントエンドのみの MVP として確認されています。
+  \item v1 のテクノロジ決定が最終決定されました: \textbf{Vanilla HTML、CSS、および JavaScript}。
+  \item パフォーマンスまたは品質の目標が満たされない限り、v1 にはアニメーション ライブラリは必要ありません。
+\end{itemize}
+
+\section{目標と達成基準}
+\subsection{目的}
+\begin{enumerate}[leftmargin=*]
+  \item ナイトモードとオーロラアニメーションのワンクリックアクティベーションを実装します。
+  \item デスクトップとモバイルに応答性の高い UI を提供します。
+  \item アクセシビリティとパフォーマンスのベースライン目標を達成します。
+  \item SDLC ドキュメントを実装と同期させます。
+\end{enumerate}
+
+\subsection{成功指標}
+\begin{longtable}{|p{0.30\linewidth}|p{0.20\linewidth}|p{0.40\linewidth}|}
+\hline
+メトリック & ターゲット & 測定 \\
+\hline
+パフォーマンススコア & 灯台 >= 85 & Lighthouse は本番ビルドで実行されます \\
+\hline
+アクセシビリティスコア & 灯台 >= 90 & キーボードチェックとLighthouse \\
+\hline
+インタラクションのレイテンシー & <= 200 ミリ秒 & クリックから移行開始までの DevTools のタイミング \\
+\hline
+アニメーションの滑らかさ & デスクトップでは 55 FPS 以上、モバイルでは 30 FPS 以上 & ブラウザのパフォーマンスプロファイル \\
+\hline
+\end{longtable}
+
+\section{範囲}
+\subsection{範囲内}
+\begin{itemize}[leftmargin=*]
+  \item 主要なアクション ボタンが 1 つある単一ページ レイアウト。
+  \item 夜空の背景の遷移。
+  \item アクティブ モードのオーロラ アニメーション。
+  \item 動作を減らしたフォールバック動作。
+  \item 一般的なモバイルおよびデスクトップ サイズの応答動作。
+\end{itemize}
+
+\subsection{範囲外}
+\begin{itemize}[leftmargin=*]
+  \item バックエンド API とユーザー アカウント。
+  \item CMSの機能。
+  \item ネイティブモバイルアプリ。
+  \item リアルタイムの地理位置情報または天候に基づくオーロラ モデル。
+\end{itemize}
+
+\section{制約と仮定}
+\begin{itemize}[leftmargin=*]
+  \item 予算は最小限で、プロジェクトは個人で所有されます。
+  \item 対象ブラウザ：最新のChrome、Edge、Firefox。
+  \item デプロイメントは静的ホスティングになります。
+  \item 最新のブラウザ機能が利用可能です。
+\end{itemize}
+
+\section{マイルストーン}
+\begin{longtable}{|p{0.34\linewidth}|p{0.18\linewidth}|p{0.38\linewidth}|}
+\hline
+マイルストーン & 日付 & 終了基準 \\
+\hline
+要件と設計ベースラインが完了 & 2026-02-24 & PRD、SRS、SDS ファーストパス承認済み \\
+\hline
+コアの実装が完了しました & 2026-03-07 & ナイトモードとオーロラ動作を実装 \\
+\hline
+テストと品質ゲートが完了しました & 2026-03-14 & テスト計画/ケースが実行され、RTM が更新されました \\
+\hline
+MVPリリース完了 & 2026-03-20 & 導入およびリリースのチェックリストに合格しました \\
+\hline
+\end{longtable}
+
+\section{初期リスク}
+\begin{itemize}[leftmargin=*]
+  \item ローエンドデバイスではパフォーマンスが低下します。
+  \item ブラウザのレンダリングの違い。
+  \item アニメーション調整によるタイムラインのずれ。
+\end{itemize}
+
+\section{承認}
+\begin{itemize}[leftmargin=*]
+  \item 製品所有者: Tanvir Sadi (2026-02-18 承認)
+  \item レビュアー:未定
+\end{itemize}
+
+\end{document}

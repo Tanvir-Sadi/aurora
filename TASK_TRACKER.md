@@ -5,9 +5,9 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 ## Snapshot
 
-- Generated: 2026-02-18 15:32:44 +09:00
+- Generated: 2026-02-19 15:28:19 +09:00
 - Branch: main
-- Last commit: e57fe98
+- Last commit: 730863f
 - Latest release tag: v1.1.0
 - Requirements locked count: FR=6, NFR=4
 
@@ -34,7 +34,7 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 ## Git Working Tree
 
-- Staged changes: 21
+- Staged changes: 15
 - Unstaged changes: 0
 - Untracked files: 0
 
@@ -42,6 +42,7 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 
 | Commit | Date | Message |
 |---|---|---|
+| 730863f | 2026-02-18 | feat: add interactive aurora effects and sync v1.2 SDLC docs |
 | e57fe98 | 2026-02-18 | docs: align PIR and v1.2 backlog to realism-first aurora plan |
 | 79aec4c | 2026-02-18 | docs: add A-01/A-02 artifacts and fix PIR action-items table layout |
 | 564fa11 | 2026-02-18 | docs: finalize post-release SDLC updates and refresh tracker for v1.1.0 |
@@ -49,7 +50,6 @@ Do not edit manually. Run `scripts/update-task-tracker.ps1` to refresh.
 | a65e0b2 | 2026-02-18 | test/docs: mark TC-07..TC-10 passed and complete WP-06 |
 | 3990741 | 2026-02-18 | test/docs: sync TC-03..TC-06 status and update agent skills workflow |
 | 55141c1 | 2026-02-18 | ドキュメントとタスクトラッカーの更新 |
-| f42c61c | 2026-02-18 | hook test |
 
 ## Release Tags
 
